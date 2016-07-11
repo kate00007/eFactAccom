@@ -1,0 +1,180 @@
+<style>
+     .myMap 
+     {
+         width:264px;
+         height:411px;
+       
+     }
+     
+     .facts-mobile
+     {
+        background: #EAE5DC;    
+     }
+     a {
+         color:#7F7F7F;    
+         text-decoration: none;
+     }   
+     
+     .facts-mobile 
+     {
+         background: #B8B8B8;
+     }
+     .facts-mobile p, .facts-mobile h3
+     {
+         margin: 10px;
+     }
+     
+     .emailLink 
+     {
+         word-wrap: break-word;
+     }
+</style>
+                    <div class="col-md-4  col-sm-12 col-xs-12">
+						<h2 class="heading">Why stay?</h2>
+						
+                        <p>{{productInfo.getProductHomePageDescription()}}</p>
+						
+                       
+					</div>
+					
+					<div class="col-md-8 hidden-sm hidden-xs">
+                    
+						<div class="blocks">
+                     
+
+							<div class="box-1">
+                          
+   
+
+                               <img ng-show="ImageExist(GetHomePageImage(1))" imagefit fallback-src="getHiResOptionImage(GetHomePageImage(1))" ng-src="{{GetHomePageImage(1)}}" alt="" />
+							   <p ng-hide=ImageExist(GetHomePageImage(1))>Image 1 </p>
+
+
+								<a href="#imageLibrary"><span class="title">Gallery</span></a>
+								
+							</div>
+							<div class="box-2 padd-20">
+								<h3>Facts</h3>
+								<p><strong>Star Ratings:</strong> <br> {{productInfo.getRating()}}</p>
+                                <p><strong>Address:</strong><br>{{productInfo.getFullAddress()}}</p>
+                                <p><strong>Email:</strong> <br><span class="emailLink">{{productInfo.getEmail()}} </span></p>
+                                <p><strong>Phone:</strong> <br>{{productInfo.getPhone()}} </p>
+								<span class="arrow"></span>
+							</div>
+							
+							<div class="box-3">
+                            
+								<!--  gmaps -->
+                               
+								<div id="contact-map" ng-show="CoordinatesExist()">
+								
+								 <ng-map zoom="11" center="{{mapCoordinates}}" class="myMap">
+                                  <marker position="{{mapCoordinates}}" />
+                                  <shape name="circle" radius="200" center="{{mapCoordinates}}" radius="2000" />
+                                  <control name="overviewMap" opened="true" />
+                                </ng-map>
+                                
+								</div>					                 
+								<!-- ./ gmaps -->
+
+                                <div ng-hide="CoordinatesExist()">
+                                    <p>Map: Latitude, Longitude  </p>
+                                    <p>Tip: to get your latitude and longitude, go to this <a href="http://www.mapcoordinates.net/en">site.</a></p>
+                                   
+                                </div>
+							</div>
+							
+							<div class="box-4">
+								  <img ng-show="ImageExist(GetHomePageImage(2))" imagefit fallback-src="getHiResOptionImage(GetHomePageImage(1))" ng-src="{{GetHomePageImage(2)}}" alt="" />
+							      <p ng-hide=ImageExist(GetHomePageImage(2))>Image 2 </p>
+								
+							</div>
+							
+							<div class="box-5">
+							   
+                                <div ng-show="myData.heroVideos[0].Product_Video != null">
+                                       <embed-video iframe-id="{{myData.heroVideos[0].Product_Core_Video_Id}}"  width=473 height=196  ng-href="{{GetVideoLink(myData.heroVideos[0].Product_Video)}}"></embed-video>
+						        </div>
+
+								<div ng-show="myData.videos[0].Product_Video != null && myData.heroVideos[0].Product_Video == null">
+                                       <embed-video iframe-id="{{myData.videos[0].Product_Core_Video_Id}}"  width=473 height=196  ng-href="{{GetVideoLink(myData.videos[0].Product_Video)}}"></embed-video>
+						        </div>
+
+                               
+
+
+                                <img ng-show="ImageExist(GetHomePageImage(3)) && myData.videos[0].Product_Video == null && myData.heroVideos[0].Product_Video == null" imagefit ng-src="{{GetHomePageImage(3)}}" alt=""/>
+
+	
+                           </div>
+                           
+							
+						</div>	<!--end blocks-->
+							
+					</div><!--end col md 8-->
+
+                    <div class="col-sm-12 col-xs-12 visible-xs visible-sm">
+                            <!-- box 1 mobile -->  
+                           <div class="row" style="height:221px;margin-top: 8%;">
+                             
+                                <img imagefit ng-show="ImageExist(GetHomePageImage(1))" fallback-src="getHiResOptionImage(GetHomePageImage(1))" ng-src="{{GetHomePageImage(1)}}" alt="" />
+
+
+								<a  href="#imageLibrary"><span class="title">Gallery</span></a>
+								
+							</div>
+
+                            <!-- box 2 mobile --> 
+                            <div class="facts-mobile row">
+								<h3>Facts</h3>
+								<p><strong>Star Ratings:</strong> <br> {{productInfo.getRating()}}</p>
+                                <p><strong>Address:</strong><br>{{productInfo.getFullAddress()}}</p>
+                                <p><strong>Email:</strong> <br><span class="emailLink">{{productInfo.getEmail()}} </span></p>
+                                <p><strong>Phone:</strong> <br>{{productInfo.getPhone()}} </p>
+								<span class="arrow"></span>
+							</div>
+
+                             <!-- box 4 mobile -->
+                            <div class="row" style="height:221px;">
+								   <img imagefit ng-show="ImageExist(GetHomePageImage(2))" fallback-src="getHiResOptionImage(GetHomePageImage(1))" ng-src="{{GetHomePageImage(2)}}" alt=""/>
+								
+							</div>
+                            <br />
+                            <br />
+                            <!-- box 3 mobile -->
+                            <div class="row">
+                                        <div id="Div1" class="full-width" ng-show="CoordinatesExist()"ng-show="CoordinatesExist()">
+				                           <ng-map zoom="11" center="{{mapCoordinates}}">
+                                              <marker position="{{mapCoordinates}}" />
+                                              <shape name="circle" radius="400" center="{{mapCoordinates}}" radius="4000" />
+                                              <control name="overviewMap" opened="true" />
+                                            </ng-map>
+				    
+				    
+				                       </div>		
+								
+							</div>
+
+                             <br />
+                            <!-- box 3 mobile -->	
+							<div class="row" >
+							    
+                              
+								<div class="embed-responsive embed-responsive-16by9"  ng-show="myData.heroVideos[0].Product_Video != null">
+                                       <embed-video iframe-id="{{myData.heroVideos[0].Product_Core_Video_Id}}"  width=473 height=196  ng-href="{{GetVideoLink(myData.heroVideos[0].Product_Video)}}"></embed-video>
+						        </div>
+                              
+
+							    <div class="embed-responsive embed-responsive-16by9" ng-show="myData.videos[0].Product_Video != null && myData.heroVideos[0].Product_Video == null">
+                                       <embed-video iframe-id="{{myData.videos[0].Product_Core_Video_Id}}"   ng-href="{{GetVideoLink(myData.videos[0].Product_Video)}}"></embed-video>
+						        </div>
+
+                                <img ng-show="ImageExist(GetHomePageImage(3)) && myData.videos[0].Product_Video == null && myData.heroVideos[0].Product_Video == null" imagefit fallback-src="getHiResOptionImage(GetHomePageImage(3))" ng-src="{{GetHomePageImage(3)}}" alt="" />
+
+	                           
+                           </div>
+                           
+
+
+                    </div>
+					

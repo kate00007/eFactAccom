@@ -1,0 +1,273 @@
+<style>
+    .test {
+        display: none;
+    }
+    
+    .facts-details h2,
+    .facts-details p {
+        margin: 10px;
+    }
+    
+    .facts-details a {
+        color: #7F7F7F;
+    }
+    
+    .detailDesc:first-letter {
+        text-transform: capitalize
+    }
+    
+    .facilitiesHeading 
+    {
+        margin-left:10px;
+    }
+</style>
+<div ng-repeat="fact in ::myData.facts" class="facts-details">
+    <h2 class="heading">Rating, policies and Inclusions</h2>
+
+    <div class="room">
+        <div class="row">
+            <div class="col-md-6">
+
+                <!--# Awards and Affiliations: Award Description: null-->
+                <h4 ng-show="{{HasAwardsRatesInfo()}}" class="facilitiesHeading">Awards and Affiliations</h4>
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( facts.Ratings_Awards )}}">
+                        <p class="title">{{GetRatingsHeader ('Ratings_Awards') }}</p>
+                        <p>{{facts.Ratings_Awards | replaceNull}}</p>
+                    </div>
+                </div>
+
+
+                <!--# Transport -->
+                <h4 ng-show="{{HasTransportRatesInfo()}}" class="facilitiesHeading">Transport</h4>
+
+                <!-- Transport Airport Y/N-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF (facts.Ratings_TransportAirport)}}">
+                        <p class="title">{{GetRatingsHeader ('Ratings_TransportAirport') }}</p>
+                    </div>
+                </div>
+
+                <!-- TransportCity Y/N-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( facts.Ratings_TransportCity )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_TransportCity') }}</p>
+                    </div>
+                </div>
+
+
+
+                <!--# Meal Plan -->
+                <h4 ng-show="{{HasMealPlanRatesInfo()}}" class="facilitiesHeading">Meal Plan - Lead-in price inclusive of:</h4>
+                <!-- Ratings_MealPlan: null-->
+                <div>
+                    
+                    <div class="features" ng-show="{{GetTorF (facts.Ratings_MealPlan)}}">
+                        <p class="title">{{GetRatingsHeader ('Ratings_MealPlan') }}</p>
+                        <p>{{facts.Ratings_MealPlan | replaceNull}}</p>
+                    </div>
+                </div>
+
+
+                <!--#Insurance -->
+                <h4 ng-show="{{HasInsureanceRatesInfo()}}" class="facilitiesHeading">Insurance</h4>
+
+                <!-- Insurance: Public Liability:  N Other Inclusions (specify)=N -->
+                <div>
+                     <div class="features" ng-show="{{GetTorF( facts.Ratings_InsurancePublicLiability )}}">
+                        <p class="title">{{GetRatingsHeader ('Ratings_InsurancePublicLiability') }}</p>
+                        <p class="detail" ng-show="{{GetOtherInclusions( facts.Ratings_InsurancePublicLiability )}}">Other Inclusions:{{GetOtherInclusions( facts.Ratings_InsurancePublicLiability)}}</p>
+                     </div>
+                </div>
+
+                <!-- Insurance: Ratings_InsurancePersonal:  N Other Inclusions (specify)=N -->
+                <div>
+                    <div class="features" ng-show="{{GetTorF( facts.Ratings_InsurancePersonal )}}">
+                        <p class="title">{{GetRatingsHeader ('Ratings_InsurancePersonal') }}</p>
+                        <p class="detail" ng-show="{{GetOtherInclusions( value )}}">Other Inclusions:{{GetOtherInclusions( facts.Ratings_InsurancePersonal )}}</p>
+                    </div>
+                </div>
+
+
+                <!--# Minimum Stay -->
+                <h4 ng-show="{{HasMinimumStayInfo()}}" class="facilitiesHeading">Minimum Stay</h4>
+                <!-- Minimum Stay  N Minimum number of nights=null -->
+                <div>
+                  
+                    <div class="features" ng-show="{{GetTorF( facts.Ratings_MinStay )}}">
+                        <p class="detail" ng-show="{{GetMinimumNightsTF( facts.Ratings_MinStay)}}">{{GetMinimumNights(facts.Ratings_MinStay)}}</p>
+                    </div>
+                </div>
+
+                <!--Child Policy -->
+                <h4 ng-show="{{HasChildPoliciyRatesInfo()}}" class="facilitiesHeading">Child Policy</h4>
+                <!-- Ratings_ChildPolicyAdultsOnly -- N Minimum number of nights=null -->
+                <div>
+                    <div class="features" ng-show="{{GetTorF( facts.Ratings_ChildPolicyAdultsOnly )}}">
+                        <p class="title">{{GetRatingsHeader ('Ratings_ChildPolicyAdultsOnly') }}</p>
+                        <p class="detail" ng-show="{{GetMinAge( facts.Ratings_ChildPolicyAdultsOnly )}}">Minimum Age:{{GetMinAge( facts.Ratings_ChildPolicyAdultsOnly ) | replaceNull}}</p>
+                    </div>
+                </div>
+
+
+
+                <!-- Ratings_ChildPolicyChildFree Y/N-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( facts.Ratings_ChildPolicyChildFree )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_ChildPolicyChildFree') }}</p>
+                    </div>
+                </div>
+
+                <!--# Servicing -->
+                <h4 ng-show="{{HasServicingRatesInfo()}}" class="facilitiesHeading">Servicing</h4>
+                <!-- Servicing: null-->
+                <div>
+
+                    <div class="features" ng-show="{{GetTorF (facts.Ratings_Servicing )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_Servicing') }}</p>
+                        <p>{{facts.Ratings_Servicing | replaceNull}}</p>
+                    </div>
+                </div>
+
+
+                <!--# Special Offers-->
+                <h4 ng-show="{{HasSpecialOffersRatesInfo()}}" class="facilitiesHeading">Special Offers</h4>
+                <!--Special Offers: Stay pay offer N Details=null Validity=null-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( facts.Ratings_SpecialOffersStayPay )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOffersStayPay') }}</p>
+                        <p class="detail" ng-show="{{GetRatingsDetails( facts.Ratings_SpecialOffersStayPay )}}">Details</p>
+                        <p class="detailDesc">{{GetRatingsDetails( facts.Ratings_SpecialOffersStayPay ) | replaceNull}} </p>
+                        <p class="validity" ng-show="{{GetRatingsValidity( facts.Ratings_SpecialOffersStayPay )}}">Validity: {{GetRatingsValidity( facts.Ratings_SpecialOffersStayPay ) | replaceNull}} </p>
+
+
+
+                    </div>
+                </div>
+
+
+                <!--Special Offers: Upgrade offer N Details=null Validity=null-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( facts.Ratings_SpecialOffersUpgrade)}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOffersUpgrade') }}</p>
+                        <p class="detail" ng-show="{{GetRatingsDetails( facts.Ratings_SpecialOffersUpgrade )}}">Details</p>
+                        <p class="detailDesc">{{GetRatingsDetails( facts.Ratings_SpecialOffersUpgrade ) | replaceNull}} </p>
+                        <p class="validity" ng-show="{{GetRatingsValidity( facts.Ratings_SpecialOffersUpgrade )}}">Validity: {{GetRatingsValidity(facts.Ratings_SpecialOffersUpgrade) | replaceNull}} </p>
+
+
+
+                    </div>
+                </div>
+
+                <!--Special Offers: Meal offer N Details=null Validity=null-->
+                <div>
+                     <div class="features" ng-show="{{GetTorF ( facts.Ratings_SpecialOffersMeal )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOffersMeal') }}</p>
+                        <p class="detail" ng-show="{{GetRatingsDetails( facts.Ratings_SpecialOffersMeal )}}">Details</p>
+                        <p class="detailDesc">{{GetRatingsDetails( facts.Ratings_SpecialOffersMeal ) | replaceNull}} </p>
+                        <p class="validity" ng-show="{{GetRatingsValidity( facts.Ratings_SpecialOffersMeal )}}">Validity: {{GetRatingsValidity( facts.Ratings_SpecialOffersMeal ) | replaceNull}} </p>
+
+
+
+                    </div>
+                </div>
+
+                <!--Specials Offers: Airport transfer offer N Details=null Validity=null-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( facts.Ratings_SpecialOfferAirportTransfer )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOfferAirportTransfer') }}</p>
+                        <p class="detail" ng-show="{{GetRatingsDetails(facts.Ratings_SpecialOfferAirportTransfer )}}">Details</p>
+                        <p class="detailDesc">{{GetRatingsDetails(facts.Ratings_SpecialOfferAirportTransfer) | replaceNull}} </p>
+                        <p class="validity" ng-show="{{GetRatingsValidity( facts.Ratings_SpecialOfferAirportTransfer )}}">Validity: {{GetRatingsValidity( facts.Ratings_SpecialOfferAirportTransfer ) | replaceNull}} </p>
+
+
+
+                    </div>
+                </div>
+
+                <!--Special Offers: Resort voucher offer N Details=null Validity=null-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( value )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOfferResortVoucher') }}</p>
+                        <p class="detail" ng-show="{{GetRatingsDetails( facts.Ratings_SpecialOfferResortVoucher )}}">Details</p>
+                        <p class="detailDesc">{{GetRatingsDetails(facts.Ratings_SpecialOfferResortVoucher) | replaceNull}} </p>
+                        <p class="validity" ng-show="{{GetRatingsValidity( facts.Ratings_SpecialOfferResortVoucher )}}">Validity: {{GetRatingsValidity( facts.Ratings_SpecialOfferResortVoucher ) | replaceNull}} </p>
+
+
+
+                    </div>
+                </div>
+
+
+                <!--Special Offers: Flowers or wine on arrival offer N Details=null Validity=null-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( value )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOfferFlowers') }}</p>
+                        <p class="detail" ng-show="{{GetRatingsDetails( facts.Ratings_SpecialOfferFlowers )}}">Details</p>
+                        <p class="detailDesc">{{GetRatingsDetails( facts.Ratings_SpecialOfferFlowers) | replaceNull}} </p>
+                        <p class="validity" ng-show="{{GetRatingsValidity( facts.Ratings_SpecialOfferFlowers )}}">Validity: {{GetRatingsValidity( facts.Ratings_SpecialOfferFlowers) | replaceNull}} </p>
+
+
+
+                    </div>
+                </div>
+
+                <!--Special Offers: Honeymoon offer N Details=null Validity=null-->
+                <div>
+                    <div class="features" ng-show="{{GetTorF ( facts.Ratings_SpecialOfferHoneymoon )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOfferHoneymoon') }}</p>
+                        <p class="detail" ng-show="{{GetRatingsDetails( facts.Ratings_SpecialOfferHoneymoon )}}">Details</p>
+                        <p class="detailDesc">{{GetRatingsDetails( facts.Ratings_SpecialOfferHoneymoon) | replaceNull}} </p>
+                        <p class="validity" ng-show="{{GetRatingsValidity( facts.Ratings_SpecialOfferHoneymoon )}}">Validity: {{GetRatingsValidity( facts.Ratings_SpecialOfferHoneymoon ) | replaceNull}} </p>
+
+
+
+                    </div>
+                </div>
+
+                <!-- Ratings_SpecialOfferOthers: null-->
+                <div>
+                     <div class="features" ng-show="{{GetTorF (facts.Ratings_SpecialOfferOthers )}}">
+
+                        <p class="title">{{GetRatingsHeader ('Ratings_SpecialOfferOthers') }}</p>
+                        <p>{{facts.Ratings_SpecialOfferOthers | replaceNull}}</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-md-6 col-sm-12 col-xs-12 ">
+                <div style="width:570px;height:311px;" class="hidden-xs hidden-sm">
+                    <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(HomeAll[4][1]))"  ng-src="{{HomeAll[4][1]}}" alt="" />
+
+
+                    <a href="#imageLibrary"><span class="title">Gallery</span></a>
+                </div>
+
+                <div class="col-sm-12 col-xs-12 visible-xs visible-sm" style="height:311px;">
+                    <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(HomeAll[4][1]))" ng-src="{{HomeAll[4][1]}}" alt="" />
+                    <a href="#imageLibrary"><span class="title">Gallery</span></a>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ./row -->
+
+    </div>
+
+
+</div>
+<!--- end ngrepeat -->

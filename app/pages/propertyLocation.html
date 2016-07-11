@@ -1,0 +1,73 @@
+<style>
+    .test 
+    {
+      display:none;
+    }
+</style>
+
+<h2 class="heading">Map</h2>
+			    
+				<div id="contact-map" class="full-width" ng-show="CoordinatesExist()">
+                           <div>
+				               <ng-map zoom="11" center="{{mapCoordinates}}">
+                                  <marker position="{{mapCoordinates}}" />
+                                  <shape name="circle" radius="400" center="{{mapCoordinates}}" radius="4000" />
+                                  <control name="overviewMap" opened="true" />
+                                </ng-map>
+				          </div>
+				    
+                          <div ng-hide="{{mapCoordinates}}">
+                                  <p>Coordinates:{{mapCoordinates}} (Latitude, Longitude)  </p>
+                                    <p>Tip: to get your latitude and longitude, go to this <a href="http://www.mapcoordinates.net/en">site.</a></p>
+                                   
+                          </div>
+				</div>					
+				<!-- ./ gmaps -->
+				
+				<hr>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<h4 class="features-title">Directions</h4>
+					</div>
+				</div><!-- ./row -->
+				
+                
+				<div class="row">
+                    <div>
+                     
+                  	
+					<div class="col-md-6">	
+                        <p class="test">{{value=facts.Property_LocationDistanceFromAirPort;property='Property_LocationDistanceFromAirPort'}}::{{value}}</p>
+					
+						<div class="features">
+                           
+							<p class="title">Distance from main Airport</p>
+							
+                            <p class="detail" ng-show="GetFlyingDistance( value )" > Flying Distance: {{GetFlyingDistance(value)}}</p> 
+                            <p class="detail" ng-show="GetDrivingDistance( value )" > Driving Distance:  {{GetDrivingDistance(value)}}</p> 
+						    <p class="detail" ng-show="GetDistanceInMiles( value )" > 15 Distance in miles:  {{GetDistanceInMiles(value)}}</p> 
+					
+
+                        </div>						
+					</div>
+                   
+                   <div class="col-md-6">	
+                        <p class="test">{{value=facts.Property_LocationDistanceFromCenter;property='Property_LocationDistanceFromCenter'}}::{{value}}</p>
+					
+						<div class="features">
+                            
+							<p class="title">Distance from main Airport</p>
+							
+                            <p class="detail" ng-show="GetFlyingDistance( value )" > Flying Distance: {{GetFlyingDistance(value)}}</p> 
+                            <p class="detail" ng-show="GetDrivingDistance( value )" > Driving Distance:  {{GetDrivingDistance(value)}}</p> 
+						    <p class="detail" ng-show="GetDistanceInMiles( value )" > 15 Distance in miles:  {{GetDistanceInMiles(value)}}</p> 
+					
+                        </div>						
+					</div>
+
+					
+				
+				</div><!-- ./row -->
+
+                

@@ -1,0 +1,79 @@
+<style>
+.contact-image 
+{ 
+    margin: 0 auto;
+    margin-bottom:20px;
+    background-color:Gray;
+}
+
+.contact-name
+{
+    font-weight:bold;    
+    font-size:110%;
+    
+}
+
+.photoContainer 
+{ 
+    width:150px;
+    height:150px;
+    background-position: center;
+    background-size: cover;
+    margin:auto;
+    background-color:Gray;
+    margin-bottom:10px;
+  }
+</style>
+<!-- contact-info -->
+<div class="contact-info text-center">
+    <p> {{::myData.Product_Name}}</p>
+       
+    <br />
+    <img src="{{::LogoThumb}}" alt="" />
+    <p>
+        CONTACT
+    </p>
+    <a href="{{::myData.WebSite}}">{{myData.WebSite}}</a>
+    <div >
+      <div ng-if="myData.participants.length == 1">
+         <div ng-repeat="participant in ::myData.participants" class=class="col-md-2 col-md-offset-5" style="padding:20px;">
+           
+            <div class="col-md-12">
+               <br />
+                
+                 <div class="photoContainer"   bg-image2="{{ GetParticipantThumbPhoto(participant.photo) }}"></div>
+                <p class="contanct-name"><strong>{{::participant.FullName}}</strong></p>
+                <p class="text-center">{{::participant.Dept}}</p>
+                <p class="text-center">{{::participant.Phone1}}</p>
+                <p class="text-center">{{::participant.Phone2}}</p>
+                <p class="text-center" style="word-wrap: break-word;">{{::participant.www}}</p> 
+             
+            </div>
+            <br />
+        </div>
+
+      </div>
+
+      <div ng-if="myData.participants.length > 1">
+        <div ng-repeat="participant in ::myData.participants" class="col-md-4 col-sm-12 col-xs-12 " style="padding:20px;">
+           
+            <div class="col-md-12">
+               <br />
+                
+                 <div class="photoContainer"   bg-image2="{{ GetParticipantThumbPhoto(participant.photo) }}"></div>
+                <p class="contanct-name"><strong>{{::participant.FullName}}</strong></p>
+                <p class="text-center">{{::participant.Dept}}</p>
+                <p class="text-center">{{::participant.Phone1}}</p>
+                <p class="text-center">{{::participant.Phone2}}</p>
+                <p class="text-center" style="word-wrap: break-word;">{{::participant.www}}</p> 
+             
+            </div>
+            <br />
+        </div>
+       </div>
+     
+    </div>
+
+</div>
+
+<!-- ./contact-info -->

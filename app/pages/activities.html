@@ -1,0 +1,294 @@
+<style>
+    .test
+    {
+        display: none;
+    }
+    
+     a.activitiesLink: hover
+    {
+       
+        color: #AF8E3F;
+        text-decoration: none;
+    }
+    .activitiesLink
+    {  
+       
+        padding: 10px 20px;
+        background-color: rgb(234, 229, 220);
+        color: rgb(159, 159, 159);
+        font-size: 12px;
+        margin: 10px;
+    }
+    .optionDescription
+    {
+        margin: 10px;
+    }
+    #activities-prop p, #activities-prop h2, #activities-prop h4, .optionType
+    {
+        margin: 10px;
+    }
+</style>
+<div id="activities-prop" class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <h2 class="heading">
+            Activities</h2>
+        <!--Complimentary Touring--->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_FeatureComplimentaryTouring;property='Activities_FeatureComplimentaryTouring'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <!--<p class="detail" ng-show="GetDetails( value )" >Details</p> --->
+                <p class="detailDesc">
+                    {{GetDetails( value ) | replaceNull | capitalize}}
+                </p>
+            </div>
+        </div>
+        <!--On Site Golf: N Course=null--->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_FeatureOnsiteGolf;property='Activities_FeatureOnsiteGolf'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <!--<p class="detail" ng-show="GetDetails( value )" >Details</p> --->
+                <p class="detailDesc">
+                    {{GetGolfDetails( value ) | replaceNull | capitalize }}
+                </p>
+
+                <p>{{GetGolfCourse( value ) | replaceNull | capitalize }}</p>
+            </div>
+        </div>
+        <!--- Tennis Court: N Number=null Complimentary=N--->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_FeatureTennisCourt;property='Activities_FeatureTennisCourt'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="number" ng-show="GetNumber( value )">
+                    {{GetNumber( value )}}
+                </p>
+            </div>
+        </div>
+        <!--- Private Beach Y/N--->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_FeaturePrivateBeach;property='Activities_FeaturePrivateBeach'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--- Private Gardens  Y/N--->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_FeaturePrivateGardens;property='Activities_FeaturePrivateGardens'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--On Site Entertainment: N Details=null-->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_FeatureEntertainment;property='Activities_FeatureEntertainment'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <!--<p class="detail" ng-show="GetDetails( value )" >Details</p> --->
+                <p class="detailDesc">
+                    {{GetDetails( value ) | replaceNull | capitalize }}
+                </p>
+            </div>
+        </div>
+        <!--Guest Lounge Y/N  --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorGuestLounge;property='Activities_IndoorGuestLounge'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Library Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorLibrary;property='Activities_IndoorLibrary'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Book Swap Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorBookSwap;property='Activities_IndoorBookSwap'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Indoor Games Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorGames;property='Activities_IndoorGames'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Other Indoor Pursuits: Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorOther;property='Activities_IndoorOther'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--On site Culintary Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_OtherActivitiesCulinary;property='Activities_OtherActivitiesCulinary'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
+                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
+                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}
+                </p>
+            </div>
+        </div>
+        <!--On site Water Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_OtherActivitiesWater;property='Activities_OtherActivitiesWater'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
+                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
+                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
+            </div>
+        </div>
+        <!--On site Other Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_OtherActivitiesOther;property='Activities_OtherActivitiesOther'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
+                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
+                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
+            </div>
+        </div>
+        <!--On site Other Nearby(off-site) Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_OtherActivitiesNearby;property='Activities_OtherActivitiesNearby'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
+                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
+                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
+            </div>
+        </div>
+    </div>
+    <!--desktop side images -->
+    <div class="col-md-8 hidden-sm hidden-xs">
+        <div class="blocks">
+            <div class="box-1">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[0][1]))" ng-src="{{ActivitiesAll[0][1]}}" alt="" />
+                <p>
+                    Image 1</p>
+            </div>
+            <div class="box-2">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[1][1]))" ng-src="{{ActivitiesAll[1][1]}}" alt="" />
+                <p>
+                    Image 2</p>
+            </div>
+            <div class="box-3">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[2][1]))"  ng-src="{{ActivitiesAll[2][1]}}" alt="" />
+                <p>
+                    Image 3</p>
+            </div>
+            <div class="box-4">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[3][1]))" ng-src="{{ActivitiesAll[3][1]}}" alt="" />
+                <p>
+                    Image 4</p>
+            </div>
+            <div class="box-5">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[4][1]))" ng-src="{{ActivitiesAll[4][1]}}" alt="" />
+                <p>
+                    Image 5</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./row -->
+<hr />
+<div ng-repeat="a in productInfo.getActivityList()">
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="optionType">
+                {{a.Option_Name}}</a></h4>
+            <!--  <p class="optionDescription"> {{a.Option_Id}} </p> -->
+            <p class="optionDescription">
+                {{a.Description}}
+            </p>
+            <p>
+            </p>
+            <br />
+            <a href="#activityDetails?productOptionId={{a.Product_Option_Id}}" class="activitiesLink">
+                Read More</a>
+        </div>
+        <div class="col-md-6">
+            <a href="#activityDetails?productOptionId={{a.Product_Option_Id}}" style="margin:0">
+            <div class="image-container" style="width: 502px; height: 221px; margin-top: 3%;">
+                <img imagefit fallback-src="{{productInfo.getHiResOptionImage(a.Option_Id)}}" ng-src="{{productInfo.getOptionImage(a.Option_Id)  }}"
+                    alt="" />
+            </div>
+            </a>
+        </div>
+        <hr />
+    </div>
+    <br />
+    <br />
+    <!-- end row -->
+</div>
+<!--mobile side images-->
+<div class="col-sm-12 col-xs-12 visible-xs visible-sm">
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[0][1]))" ng-src="{{ActivitiesAll[0][1]}}" alt="" />
+        <p>
+            Image 1</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[1][1]))" ng-src="{{ActivitiesAll[1][1]}}" alt="" />
+        <p>
+            Image 2</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[2][1]))" ng-src="{{ActivitiesAll[2][1]}}" alt="" />
+        <p>
+            Image 3</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[3][1]))" ng-src="{{ActivitiesAll[3][1]}}" alt="" />
+        <p>
+            Image 4</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ActivitiesAll[4][1]))" ng-src="{{ActivitiesAll[4][1]}}" alt="" />
+        <p>
+            Image 5</p>
+    </div>
+</div>

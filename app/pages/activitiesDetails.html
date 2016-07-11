@@ -1,0 +1,78 @@
+﻿<style>
+    .test 
+    {
+        display:none;    
+    }
+    
+    .roomHeader 
+    {
+        color: #AF8E3F;
+        line-height: 1.5;
+        font-size: 15px;
+        font-family: Verdana, Tahoma, Geneva, sans-serif;
+        font-weight: bold;
+    
+    }
+    
+    .roomSubHeader
+    {
+        color: #7F7F7F;
+        line-height: 1.5;
+        font-size: 13px;
+        font-family: Verdana, Tahoma, Geneva, sans-serif;    
+        font-weight: bold;
+    }
+    
+    .slideContainer 
+    {
+        height:332px;
+        min-height: 100px;
+        background-size:cover;
+        background-position: center center;
+    }
+</style>
+	   <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+            
+               <h2>{{Activity.ActivityName}}</h2>
+             </div>
+
+             <div ng-class="detailSlides.length ? 'col-md-7': 'col-md-10'">
+              
+               <p> {{Activity.LongDescription}}</p>
+               <br />
+              
+             </div>
+        
+              
+              <div class="col-md-5"  ng-show="detailSlides.length">
+                <div id="Div1" style="max-height:332px;min-height: 332px;overflow:hidden;position:relative;border-style: none;border-color: transparent;">
+                    <uib-carousel  active="active" interval="myInterval" no-wrap="noWrapSlides"  >
+                      <uib-slide ng-repeat="slide in detailSlides track by slide.id" index="slide.id">
+                        <div class="slideContainer" bg-image="{{slide.image}}">
+                       
+                        </div>
+                       
+                      </uib-slide>
+                    </uib-carousel>
+                </div>
+              </div>
+
+
+
+             
+
+           </div>
+
+
+           
+
+           <div  class="row">
+            <hr/>
+         
+           </div>
+        </div>
+
+
+      

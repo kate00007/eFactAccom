@@ -1,0 +1,89 @@
+<style>
+    .test
+    {
+        display: none;
+    }
+    
+    .roomLink
+    {
+       
+        padding: 10px 20px;
+        background-color: rgb(234, 229, 220);
+        color: rgb(159, 159, 159);
+        font-size: 12px;
+    }
+  
+    a.roomLink: hover
+    {
+       
+        color: #AF8E3F;
+        text-decoration: none;
+    }
+    
+    .roomTypesItem p, .roomTypesItem h4, .roomTypesItem h2, .roomTypesItem a, .heading
+    {
+        margin: 10px;
+    }
+    .heading1
+    {  
+        margin:17px;
+        text-transform:uppercase;    
+    }
+    .label1 
+    {
+         font-weight:bold;
+        
+    }
+</style>
+<h2 class="heading">Room</h2>
+  
+<div ng-repeat="a in ::productInfo.getRoomList()">
+    <div class="row roomTypesItem">
+        <div class="col-md-6">
+            <h4 class="optionType heading1">{{::a.Option_Name}}</h4>
+             
+            <div ng-controller="DetailsListController" ng-init="getText(a.Product_Option_Id)">
+               
+               <p  ng-if="isDefined(Room.NumberOfRooms)" ><span class="label1">Number of Rooms:</span> {{::Room.NumberOfRooms}}</p>
+               <p  ng-if="isDefined(Room.RoomSize)"  ><span class="label1">Room Size:</span> {{::Room.RoomSize}}</p>
+               <p  ng-if="isDefined(Room.Classification)" ><span class="label1">Room Type:</span> {{::Room.Classification}}</p>
+               
+               <p class="optionDescription">
+               <span class="label1">Description:</span> {{::Room.ShortDescription}}
+               </p>
+          
+           
+            </div>
+         
+            <br />
+            <a  href="#roomDetails?productOptionId={{::a.Product_Option_Id}}"  class="roomLink" >Read More</a>
+              
+                 <br /> <br />
+        </div>
+
+        <div class="col-md-6 hidden-sm hidden-xs">
+            
+                <a  href="#roomDetails?productOptionId={{a.Product_Option_Id}}" style="margin:0;">
+                <div class="image-container" style="width: 95%; height: 221px; margin-top: 0;">
+                 
+                    <img class="ng-cloak" imagefit fallback-src="{{productInfo.getHiResOptionImage(a.Option_Id)}}" ng-src="{{productInfo.getOptionImage(a.Option_Id)  }}"
+                        alt="" />
+                
+                </div>
+                </a>
+        </div>
+        <a  href="#roomDetails?productOptionId={{a.Product_Option_Id}}" style="margin:0;">
+        <div class="col-md-6  visible-sm visible-xs" style="height: 221px; margin-top: 8%;">
+            
+            <img class="ng-cloak" imagefit fallback-src="{{productInfo.getHiResOptionImage(a.Option_Id)}}" ng-src="{{productInfo.getOptionImage(a.Option_Id)  }}"
+                alt="" />
+            
+        </div>
+        </a>
+        <hr />
+        <br /><br />
+    </div>
+    <!-- end row -->
+    <br /> <br />
+</div>
+

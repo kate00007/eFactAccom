@@ -1,0 +1,117 @@
+<style>
+    .test 
+    {
+       display:none; 
+    }
+ 
+    .mapDetails p, .mapDetails h2, .mapDetails h4
+    {
+        margin:10px;
+    }
+    #gmaps {
+    width: 100%;
+    height: 303px;
+    }
+    
+    
+</style>
+<div class="mapDetails" >
+
+
+        <h2 class="heading">Map</h2>
+			   <!--  gmaps -->
+                  
+                <div ng-hide="CoordinatesExist()">
+                  <p>No map coordinates on record</p>
+                </div>	
+                
+				<div id="contact-map" class="full-width">
+				       
+                  <div class="hidden-sm hidden-xs visible-md visible-lg" my-map="" lat="{{mapData.Map_Coordinates1}}" long="{{mapData.Map_Coordinates2}}" zoom="{{map.zoom}}" sam="{{mapData.Marker_Coordiantes1}}" sam2="{{mapData.Marker_Coordiantes2}}" mcolor="{{mapData.Marker_Colour}}"></div>
+				  
+                    <div class="visible-sm visible-xs hidden-md hidden-lg">               
+                                <ng-map zoom="11" center="{{::mapCoordinates}}">
+                                  <marker position="{{::mapCoordinates}}" />
+                                  <shape name="circle" radius="400" center="{{::mapCoordinates}}" radius="4000" />
+                                  <control name="overviewMap" opened="true" />
+                                </ng-map>
+                    </div>
+				  <br />
+                  <p><span><strong>Longitude:</strong> {{mapData.Map_Coordinates1}}</span> &nbsp; &nbsp;<span><strong>Latitude:</strong> {{mapData.Map_Coordinates2}}</span> <button id="Button1" class="pull-right" ng-click="SaveMap()">Save Map</button> </p>   
+                  <p><strong>Address:</strong>{{productInfo.getFullAddress()}}</p> 
+                 
+				</div>		
+              
+				<!-- ./ gmaps -->
+				
+             
+                <div class="canvasContainer" style="display:none;">
+                   <input ID="Text1" class="coor1"  type="text" value="{{mapData.Map_Coordinates1}}">  
+                   <input ID="Text2" class="coor2"  type="text" value="{{mapData.Map_Coordinates2}}">  
+
+                   <input ID="Text5" class="marker1"  type="text" value="{{mapData.Marker_Coordiantes1}}">  
+                   <input ID="Text6" class="marker2"  type="text" value="{{mapData.Marker_Coordiantes2}}">  
+
+                   <input ID="Text3" class="zoom"  type="text" value="{{mapData.Zoom}}">  
+                   <input ID="Text4" class="markerColor"  type="text" value="{{mapData.Marker_Colour}}">  
+
+                   <input ID="MapGmapsUrlTb" class="MapGmapsUrl"  type="text">  
+                   <canvas id="imgCanvas"/></canvas>
+                      <img id="imageMap2" src=""  crossorigin="anonymous" />
+                   
+                 
+                </div>
+				
+				<hr>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<h4 class="features-title">Directions</h4>
+					</div>
+				</div><!-- ./row -->
+				
+				<div class="row">
+                    <div>
+                     
+                  	
+					<div class="col-md-6">	
+                        <p class="test">{{value=facts.Property_LocationDistanceFromAirPort;property='Property_LocationDistanceFromAirPort'}}::{{value}}</p>
+					
+						<div class="features">
+                           
+							<p class="title">Distance from city centre</p>
+
+							<p class="detail" ng-show="GetDistanceInKilometers( value )" > Distance in kilometers:  {{GetDistanceInKilometers( value )}}</p> 
+                            <p class="detail" ng-show="GetDistanceInMiles( value )" > Distance in miles:  {{GetDistanceInMiles(value)}}</p>
+                            <p class="detail" ng-show="GetDrivingDistance( value )" > Driving Time:  {{GetDrivingDistance(value)}}</p>  
+                            <p class="detail" ng-show="GetFlyingDistance( value )" > Flying Time: {{GetFlyingDistance(value)}}</p> 
+                            
+						    
+					        
+
+                        </div>						
+					</div>
+                   
+                   <div class="col-md-6">	
+                        <p class="test">{{value=facts.Property_LocationDistanceFromCenter;property='Property_LocationDistanceFromCenter'}}::{{value}}</p>
+					
+						<div class="features">
+                            
+							<p class="title">Distance from main airport</p>
+							
+                            <p class="detail" ng-show="GetDistanceInKilometers( value )" > Distance in kilometers:  {{GetDistanceInKilometers( value )}}</p>
+                            <p class="detail" ng-show="GetDistanceInMiles( value )" > Distance in miles:  {{GetDistanceInMiles(value)}}</p>
+                            <p class="detail" ng-show="GetDrivingDistance( value )" > Driving Time:  {{GetDrivingDistance(value)}}</p>   
+                            <p class="detail" ng-show="GetFlyingDistance( value )" > Flying Time: {{GetFlyingDistance(value)}}</p> 
+                            
+						    
+                           
+					
+                        </div>						
+					</div>
+
+					
+				
+				</div><!-- ./row -->
+                
+          </div>

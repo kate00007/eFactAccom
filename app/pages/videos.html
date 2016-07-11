@@ -1,0 +1,25 @@
+	<h2 class="heading">Videos</h2>
+                 			
+				 <!-- Hero Videos -->
+                 <div  ng-repeat="herovid in myData.heroVideos " >
+                  
+                    <div class="embed-responsive embed-responsive-16by9">
+                    <embed-video iframe-id="{{herovid.Product_Core_Video_Id}}"  ng-href="{{GetVideoLink(herovid.Product_Video)}}"></embed-video>
+                    </div>
+                    <br />
+                </div>
+
+                <!-- Non Hero Video -->
+                <div  ng-repeat="vid in myData.videos " >
+                   
+                    <div class="embed-responsive embed-responsive-16by9">
+                    <embed-video iframe-id="{{vid.Product_Core_Video_Id}}"  ng-href="{{GetVideoLink(vid.Product_Video)}}"></embed-video>
+                    </div>
+                    <br />
+
+                </div>
+
+                
+                
+               
+           

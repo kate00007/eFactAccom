@@ -1,0 +1,121 @@
+<style>
+    .test 
+    {
+        display:none; 
+    }
+    
+     .facilitiesLink
+    {
+        color:#7F7F7F;    
+    }
+    
+    .servicesDetails p, .servicesDetails h2
+    {
+        margin:10px;
+    }
+</style>
+
+<div class="row servicesDetails">
+		   <div class="col-md-4">
+                
+                                            
+
+               <h2 class="heading">Services</h2>
+                <!--  {{facts}} -->
+                   <div data-ng-repeat="(property, value) in facts  ">
+
+                            
+                          <div ng-if="property.indexOf('Services') > -1">
+                          
+                                           <div class="features" ng-show="{{GetTorF ( value )}}">
+                                            <p class="title">{{GetServiceHeader (property) }}</p>
+                                            
+							                <p class="complimentary" ng-show="{{GetComplimentaryTorF( value )}}">Complimentary</p>
+                                            <p class="detail" ng-show="{{GetDetails( value )}}" >Details</p> 
+                                            <p class="detailDesc">{{GetDetails( value ) | replaceNull}} </p>
+						                    </div>
+              
+                       
+                         </div>
+
+                         
+                            
+                    </div>
+
+		 
+						
+				</div>
+					
+					<div class="col-md-8 hidden-sm hidden-xs">
+						<div class="blocks">
+							
+								
+							<div class="box-1">
+                            
+								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[0][1]))" ng-src="{{ServicesAll[0][1]}}" alt="" />
+								<p>Image 1</p>
+								
+								
+							</div>
+							<div class="box-2">
+								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[1][1]))"  ng-src="{{ServicesAll[1][1]}}" alt="" />
+								<p>Image 2</p>
+							</div>
+							
+							<div class="box-3">
+								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[2][1]))"  ng-src="{{ServicesAll[2][1]}}" alt="" />
+								<p>Image 3</p>
+							</div>
+							
+							<div class="box-4">
+								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[3][1]))"  ng-src="{{ServicesAll[3][1]}}" alt="" />
+								<p>Image 4</p>
+								
+								
+							</div>
+							
+							<div class="box-5">
+								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[4][1]))"  ng-src="{{ServicesAll[4][1]}}" alt="" />
+								<p>Image 5</p>
+							</div>
+							
+						</div>	
+							
+					</div>
+
+
+                      <!--mobile side images-->
+                
+                     <div class="col-sm-12 col-xs-12 visible-xs visible-sm">
+                           
+
+                           <div class="row" style="height:221px;margin-top: 8%;">
+                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[0][1]))"  ng-src="{{ServicesAll[0][1]}}" alt="" />
+								<p>Image 1</p>
+                           </div>
+
+                           <div class="row" style="height:221px;margin-top: 8%;">
+                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[1][1]))"  ng-src="{{ServicesAll[1][1]}}" alt="" />
+								<p>Image 2</p>
+                           </div>
+
+                           <div class="row" style="height:221px;margin-top: 8%;">
+                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[2][1]))"  ng-src="{{ServicesAll[2][1]}}" alt="" />
+								<p>Image 3</p>
+                           </div>
+
+                           <div class="row" style="height:221px;margin-top: 8%;">
+                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[3][1]))"  ng-src="{{ServicesAll[3][1]}}" alt="" />
+								<p>Image 4</p>
+                           </div>
+
+                           <div class="row" style="height:221px;margin-top: 8%;">
+                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(ServicesAll[4][1]))"  ng-src="{{ServicesAll[4][1]}}" alt="" />
+								<p>Image 5</p>
+                           </div>
+                    </div>
+
+					
+				</div><!-- ./row -->
+			
+			</div>		

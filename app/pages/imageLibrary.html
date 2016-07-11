@@ -1,0 +1,160 @@
+<style>
+    .test
+    {
+        display: none;
+    }
+    
+    .zooming
+    {
+        transition: all .2s ease-in-out;
+    }
+    .zooming:hover
+    {
+        transform: scale(1.1);
+    }
+    
+    .img-lib-thumb-container 
+    {
+      /*  width: 269px; */
+        height: 201px;
+    }
+    
+     /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+           .gallery-actions p strong, .checkbox, .heading, .gallery-actions p
+            {
+                margin:10px;
+            }
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+            .gallery-actions p strong, .checkbox, .heading, .gallery-actions p
+            {
+                margin:10px;
+            }
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+            .gallery-actions p strong, .checkbox, .heading, .gallery-actions p
+            {
+                margin:10px;
+            }
+    }
+
+    
+   
+</style>
+<h2 class="heading">
+    Gallery</h2>
+<div class="gallery-actions clear">
+    <p class="pull-left">
+        <strong>Hover:</strong> to enlarge image.
+        <br>
+        <strong>Click Image:</strong> to popup large view.
+        <br>
+        <strong>Check Image:</strong> to add to download list.
+        <br>
+    </p>
+
+    <br />
+    <div class="text-right">
+        <a href="#" class="btn btn-theme btn-lg" ng-click="DownloadImages()">Download </a>
+        
+    </div>
+    <br />
+</div>
+<div class="clearfix">
+</div>
+<div class="row">
+    <div ng-repeat="i in ::myData.images ">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+
+            <div class="gallery-image">
+
+                <!-- Thumbnnail Container-->
+                <div class="image-container zooming img-lib-thumb-container" >
+                    <img data-toggle="modal" data-target="{{'#myModal' + $index}}" imagefit fallback-src="{{imagePathHiRes + i.Product_Image}}" ng-src="{{galleryLowResImage = GetLowResImage('lowres' , i.Product_Image)}}"
+                        alt="" />
+                </div>
+
+                <!-- CheckBox-->
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="{{hiResImage=imagePathHiRes+i.Product_Image}}" ng-true-value="{{hiResImage}}"
+                            ng-click="toggleSelection(hiResImage)">
+                        check to download
+                    </label>
+                </div>
+                 
+                <!-- Hi Res Image for download-->
+                <img imagefit ng-src="{{hiResImage}}" alt="" class="test" crossorigin="anonymous"/>
+               
+            </div>
+        </div>
+
+        <!-- Modal Window PopUp -->
+        <div id="{{'myModal' + $index}}" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="{{galleryLowResImage}}" alt="" class="img-responsive" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end ngrepeat-->
+</div>
+
+<!-- ./row -->
+
+<div class="row">
+<div ng-repeat="item in ::myData.details  | orderBy:'Option_Type' | groupBy:['Option_Type', 'deep.category']">
+    <h2 class="col-md-12 heading" ng-show="item.group_by_CHANGED"> {{item.Option_Type}} {{item.deep.category}}</h2>
+
+    <div  class="col-md-12"  ng-show="item.group_by_CHANGED"></div>    
+   
+        <div class="col-md-3 col-sm-6 col-xs-12" id="{{currentImageOption=GetOption(item.Option_Id)}}" ng-show="currentImageOption.Product_Image">
+            
+            <div class="gallery-image">
+
+                <!-- Thumbnnail Container-->
+                <div class="image-container zooming img-lib-thumb-container">
+                    <img data-toggle="modal" data-target="{{'#detailsModal' + $index}}" imagefit fallback-src="{{imagePathHiRes + currentImageOption.Product_Image}}" ng-src="{{galleryOptionLowResImage = GetLowResImage('lowres' , currentImageOption.Product_Image)}}"
+                        alt="" />
+                </div>
+                <p class="text-center">{{item.Classification }} | {{item.Option_Name}}</p>
+                <!-- CheckBox-->
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="{{hiResImage=imagePathHiRes+currentImageOption.Product_Image}}"
+                            ng-true-value="{{hiResImage}}" ng-click="toggleSelection(hiResImage)">
+                        check to download
+                    </label>
+                </div>
+
+                <!-- Hi Res Image for download-->
+                <img imagefit ng-src="{{hiResImage}}" alt="" class="test" />
+                
+            </div>
+        </div>
+    
+    <div id="{{'detailsModal' + $index}}" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="{{galleryOptionLowResImage}}" alt="" class="img-responsive" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end ng-rpeat-->
+</div>
+
+<!-- ./row -->
+<canvas id="imgCanvas" />
+<img id="imageid" src="" crossorigin="anonymous" style="display: none;" />
+</canvas>

@@ -1,0 +1,109 @@
+﻿<style>
+    .test 
+    {
+        display:none;    
+    }
+    
+    .roomHeader 
+    {
+        color: #AF8E3F;
+        line-height: 1.5;
+        font-size: 15px;
+        font-family: Verdana, Tahoma, Geneva, sans-serif;
+        font-weight: bold;
+    
+    }
+    
+    .roomSubHeader
+    {
+        color: #7F7F7F;
+        line-height: 1.5;
+        font-size: 13px;
+        font-family: Verdana, Tahoma, Geneva, sans-serif;    
+        font-weight: bold;
+    }
+    
+    .slideContainer 
+    {
+        height:332px;
+        min-height: 100px;
+        background-size:cover;
+        background-position: center center;
+    }
+</style>
+	   <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+               <h2>{{Room.RoomName}}</h2>
+             </div>
+
+             <div ng-class="detailSlides.length ? 'col-md-7': 'col-md-10'">
+               <p ng-show="Room.RoomDetails" >Room Size: {{Room.RoomDetails}}</p>
+               <p> {{Room.LongDescription}}</p>
+               <br />
+              
+             </div>
+        
+              
+             <div class="col-md-5"  ng-show="detailSlides.length">
+                <div id="myRoomDetailSlideShow" style="max-height:332px;min-height: 332px;overflow:hidden;position:relative;border-style: none;border-color: transparent;">
+                    <uib-carousel  active="active" interval="myInterval" no-wrap="noWrapSlides"  >
+                      <uib-slide ng-repeat="slide in detailSlides track by slide.id" index="slide.id">
+                        <div class="slideContainer" bg-image="{{slide.image}}">
+                       
+                        </div>
+                       
+                      </uib-slide>
+                    </uib-carousel>
+                </div>
+              </div>
+
+             
+
+           </div>
+
+
+           
+
+           <div  class="row">
+            <hr/>
+            <div class="col-md-4">
+             
+               <h3 ng-show="Room.RoomDetails || Room.RoomFeatures || Room.RoomFacilities || Room.RoomProvisions || Room.RoomSpaces"  class="roomHeader">Room Overview</h3>   
+               <p style="display:none">{{optionId}}</p>
+               <p style="display:none">{{Room.Classification}}</p>
+               <p style="display:none">{{Room.RoomName}}</p>
+              
+               <p  style="display:none"><span class="roomSubHeader">Number of Rooms </span><br /> {{Room.NumberOfRooms}}</p>
+               <p ng-show="Room.RoomDetails" ><span class="roomSubHeader">Details </span><br /> {{Room.RoomDetails}}</p>
+               <p ng-show="Room.RoomFeatures" ><span class="roomSubHeader">Features </span><br /> {{Room.RoomFeatures}} </p>
+               <p ng-show="Room.RoomFacilities" ><span class="roomSubHeader">Facilities </span><br /> {{Room.RoomFacilities}} </p>
+               <p ng-show="Room.RoomProvisions" ><span class="roomSubHeader">Provisions</span><br /> {{Room.RoomProvisions}} </p>
+               <p ng-show="Room.RoomSpaces" ><span class="roomSubHeader">Spaces</span><br /> {{Room.RoomSpaces}} </p>
+
+              </div>
+
+              <div class="col-md-4">
+                 <h3 ng-show="Room.BedroomFeatures || Room.BedroomFacilities || Room.BedroomProvisions || Room.Access || Room.RoomServices" class="roomHeader">Bedroom Overview</h3>   
+                 <p ng-show="Room.BedroomFeatures" ><span class="roomSubHeader">Features</span><br />  {{Room.BedroomFeatures}}</p>
+                 <p ng-show="Room.BedroomFacilities" ><span class="roomSubHeader">Facilities</span><br /> {{Room.BedroomFacilities}}</p>
+                 <p ng-show="Room.BedroomProvisions"><span class="roomSubHeader">Provisions</span><br />  {{Room.BedroomProvisions}}</p>
+                 <p ng-show="Room.Access"><span class="roomSubHeader">Access</span><br />  {{Room.Access}}</p>
+                 <p ng-show="Room.RoomServices"><span class="roomSubHeader">Services</span><br />  {{Room.RoomServices}}</p>
+          
+            </div>
+
+             <div class="col-md-4">
+               <h3 ng-show="Room.BathroomFeatures || Room.BathroomFittings || Room.BathroomProvisions" class="roomHeader">Bathroom Overview</h3> 
+                 
+           
+               <p ng-show="Room.BathroomFeatures"><span class="roomSubHeader">Features</span><br /> {{Room.BathroomFeatures}}</p>
+               <p ng-show="Room.BathroomFittings" ><span class="roomSubHeader">Fittings</span><br />  {{Room.BathroomFittings}}</p>
+               <p ng-show="Room.BathroomProvisions"><span class="roomSubHeader">Provisions</span><br /> {{ Room.BathroomProvisions }}</p>
+              
+                 
+            </div>
+           </div>
+        </div>
+
+      
