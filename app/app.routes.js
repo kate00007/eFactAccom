@@ -54,6 +54,7 @@ angular.module('app').config(function ($routeProvider) {
     
             .when('/activities', {
                 templateUrl: homePath + 'activities.html'
+                
             })
     
              .when('/facilities', {

@@ -104,9 +104,9 @@
             }
 
             $scope.getHiResImage = function(index)
-             {
+            {
                 return $scope.detailHiRes[index];
-             }
+            }
 
 
     }]);

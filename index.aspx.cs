@@ -455,11 +455,11 @@ public partial class TajAngular_index : System.Web.UI.Page
     public static string GetProductInfo()
     {
 
-        //System.Diagnostics.Debug.WriteLine("p" + p);
+        
         DidgigoDB.BennelongDataContext dbconnect1 = DidgigoDB.connectDB();
         eBrochureDataContext eConnect = new eBrochureDataContext();
         eFactchureDataContext dbFact = new eFactchureDataContext();
-        //int prodId = Convert.ToInt32(p); //109 get product id
+       
 
         int prodId = Convert.ToInt32(HttpContext.Current.Session["productid"]);
         int LongDescriptionTypeId = -1;
@@ -795,6 +795,111 @@ public partial class TajAngular_index : System.Web.UI.Page
 
     }
 
+
+
+    [WebMethod]
+    public static string GetFacts()
+    {
+        
+        eBrochureDataContext eConnectFacts = new eBrochureDataContext();
+
+        String jsonData = null;
+
+        int prodId = Convert.ToInt32(HttpContext.Current.Session["productid"]);
+
+        var facts = (from a in eConnectFacts.v_eFact_Product_Facts_Accoms
+                     where a.Product_Id == prodId
+                     select new
+                     {
+                         a.Product_Id,
+                         Facility_Dining_BBQ = a.Facilities___Dining__BBQ_facilities_for_guest_use,
+                         Facility_DiningOnsiteResto = a.Faciltiies___Dining__On_site_restaurant_s_,
+                         Facility_DiningBar = a.Facilities___Dining__On_site_bar_s_,
+                         Facility_DiningCafe = a.Facilities___Dining__On_site_cafe_s_,
+                         Facility_DiningRoomService = a.Facilities___Dining__Room_Service,
+                         Facility_DiningOutdoorDining = a.Facilities___Dining__Outdoor_dining,
+                         Facility_DiningPrivateDining = a.Facilities___Dining__Private_dining,
+                         Facility_FamilyKidsClub = a.Facilities___Family__Kids_Club,
+                         Facility_FamilyBabySitting = a.Facilities___Family__Babysitting_service,
+                         Facility_FamilyChildMinding = a.Facilities___Family__Child_minding_service,
+                         Facility_FamilyOnsitePlayground = a.Facilities___Family__On_site_children_playground,
+                         Facility_FamilyHighChair = a.Facilities___Family__Highchair_s_,
+                         Facility_FamilyCot = a.Facilities___Family__Cot_s_,
+                         Facility_FitnessSki = a.Facilities___Fitness_and_Leisure__Ski_in_ski_out,
+                         Facility_FitnessPool = a.Facilities___Fitness_and_Leisure__On_site_swimming_pool_s_,
+                         Facility_FitnessKidsPool = a.Facilities___Fitness_and_Leisure__Kids_pool_s__or_kids__shallow__section_of_pool_s_,
+                         Facility_FitnessSwimPoolBar = a.Facilities___Fitness_and_Leisure__Swim_up_pool_bar,
+                         Facility_FitnessJacuzzi = a.Facilities___Fitness_and_Leisure__On_site_Jacuzzi,
+                         Facility_FitnessGym = a.Facilities___Fitness_and_Leisure__On_site_gym,
+                         Facility_FitnessDaySpa = a.Facilities___Fitness_and_Leisure__On_site_day_spa,
+                         Property_LocationDistanceFromAirPort = a.Property_Location___Distance_from_City_Centre__Distance_in_kilometres,
+                         Property_LocationDistanceFromCenter = a.Property_Location___Distance_from_main_Airport__Distance_in_kilometres,
+                         Services_InternetOnsite = a.Services___Internet__On_site_Internet_access,
+                         Services_ParkingOnsite = a.Services___Parking__On_site_self_parking,
+                         Services_ParkingValet = a.Services___Parking__Valet_Parking,
+                         Services_LaundryFacility = a.Services___Laundry__Laundry_facilities_for_guest_use,
+                         Services_LaundryOnsite = a.Services___Laundry__On_site_Laundry_service,
+                         Services_BussinessCenter = a.Services___Businesses_services__Business_Centre,
+                         Services_BusinessConferenceRoom = a.Services___Businesses_services__Conference_Rooms,
+                         Services_OtherReception = a.Services___Other__Reception,
+                         Services_Other24HrReception = a.Services___Other__24_hour_Reception,
+                         Services_OtherConcierge = a.Services___Other__24_hour_Concierge,
+                         Services_Other24HrConcierge = a.Services___Other__24_hour_Concierge,
+                         Services_OtherChapel = a.Services___Other__Chapel,
+                         Services_OtherLift = a.Services___Other__Lift,
+                         Ratings_Awards = a.Ratings__Policies_and_Inclusions___Awards_and_Affiliations__Award_Description,
+                         Ratings_TransportAirport = a.Ratings__Policies_and_Inclusions___Transport__Complimentary_airport_transfers_included,
+                         Ratings_TransportCity = a.Ratings__Policies_and_Inclusions___Transport__City_or_local_transfers_provided_by_property,
+                         Ratings_MealPlan = a.Ratings__Policies_and_Inclusions___Meal_Plan___Lead_in_price_inclusive_of_,
+                         Ratings_InsurancePublicLiability = a.Ratings__Policies_and_Inclusions___Insurance__Public_Liability,
+                         Ratings_InsurancePersonal = a.Ratings__Policies_and_Inclusions___Insurance__Personal_Indemnity,
+                         Ratings_MinStay = a.Ratings__Policies_and_Inclusions___Minimum_Stay__Minimum_stay,
+                         Ratings_ChildPolicyAdultsOnly = a.Ratings__Policies_and_Inclusions___Child_Policy__Adults_Only,
+                         Ratings_ChildPolicyChildFree = a.Ratings__Policies_and_Inclusions___Child_Policy__Children_free_when_using_existing_bedding,
+                         Ratings_Servicing = a.Ratings__Policies_and_Inclusions___Servicing__Servicing_,
+                         Ratings_SpecialOffersStayPay = a.Ratings__Policies_and_Inclusions___Special_Offers__Stay_pay_offer,
+                         Ratings_SpecialOffersUpgrade = a.Ratings__Policies_and_Inclusions___Special_Offers__Upgrade_offer,
+                         Ratings_SpecialOffersMeal = a.Ratings__Policies_and_Inclusions___Special_Offers__Meal_offer,
+                         Ratings_SpecialOfferAirportTransfer = a.Ratings__Policies_and_Inclusions___Specials_Offers__Airport_transfer_offer,
+                         Ratings_SpecialOfferResortVoucher = a.Ratings__Policies_and_Inclusions___Special_Offers__Resort_voucher_offer,
+                         Ratings_SpecialOfferFlowers = a.Ratings__Policies_and_Inclusions___Special_Offers__Flowers_or_wine_on_arrival_offer,
+                         Ratings_SpecialOfferHoneymoon = a.Ratings__Policies_and_Inclusions___Special_Offers__Honeymoon_offer,
+                         Ratings_SpecialOfferOthers = a.Ratings__Policies_and_Inclusions___Special_Offers__Other_offers_including_details_and_validity,
+                         Activities_FeatureComplimentaryTouring = a.Activities___Feature_Activities__Complimentary_touring,
+                         Activities_FeatureOnsiteGolf = a.Activities___Feature_Activities__On_site_Golf,
+                         Activities_FeatureTennisCourt = a.Activities___Feature_Activities_On_site_full_size_tennis_court_s_,
+                         Activities_FeaturePrivateBeach = a.Activities___Feature_Activities_Private_Beach,
+                         Activities_FeaturePrivateGardens = a.Activities___Feature_Activities_Private_Gardens,
+                         Activities_FeatureEntertainment = a.Activities___Feature_Activities_Complimentary_on_site_entertainment,
+                         Activities_IndoorGuestLounge = a.Activities___Indoor_Pursuits__Guest_lounge,
+                         Activities_IndoorLibrary = a.Activities___Indoor_Pursuits__Library,
+                         Activities_IndoorBookSwap = a.Activities___Indoor_Pursuits__Book_Swap,
+                         Activities_IndoorGames = a.Activities___Indoor_Pursuits__Indoor_Games,
+                         Activities_IndoorOther = a.Activities___Indoor_Pursuits__Other_indoor_pursuits,
+                         Activities_OtherActivitiesCulinary = a.Activities___Other_Activities__On_site_culinary_activities,
+                         Activities_OtherActivitiesWater = a.Activities___Other_Activities__On_site_water_activities,
+                         Activities_OtherActivitiesOther = a.Activities___Other_Activities__On_site_other_activities,
+                         Activities_OtherActivitiesNearby = a.Activities___Other_Activities__Nearby_off_site__activities
+
+                     }).SingleOrDefault();
+
+        try
+        {
+            if (facts != null)
+            {
+                jsonData = JsonConvert.SerializeObject(facts);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            jsonData = ex.Message;
+        }
+
+        return jsonData;
+
+        
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
 

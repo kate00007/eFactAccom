@@ -24,6 +24,18 @@
             })
         };
 
+        dataFactory.getFacts = function () {
+
+            return $http({
+                url: 'index.aspx/GetFacts',
+                method: 'POST',
+                cache: true,
+                //params: params,
+                data: {}
+
+            })
+        };
+
         dataFactory.getOptionDetails = function (prodOptionId, ccId) {
             var detailsParams = {
                 'prodOptionId': prodOptionId, //'12676',

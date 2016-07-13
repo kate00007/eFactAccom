@@ -72,6 +72,7 @@
 	    <!--- angular related files---->
 		<script src="app/app.module.js"></script>
         <script src="app/app.MainController.js"></script> 
+        <script src="app/app.ActivitiesController.js"></script> 
         
         <script src="app/app.AcitivitiesDetailsViewController.js"></script>
         <script src="app/app.FacilitiesDetailsViewController.js"></script>
@@ -96,7 +97,7 @@
 			<br />
             
 			<div class="logo" >
-                <div style="width:100px;height:100px;margin:0 auto;">
+                <div style="margin:0 auto; height: 100px; max-width:300px;">
 
 				   <img ng-src="{{LogoThumb}}" fallback-src="images/LogoPlaceHolder.jpg"  alt="{{myData.Product_Name}} Logo" style="max-width:100%;max-height:100%;"/> 
                 </div>

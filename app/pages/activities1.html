@@ -21,7 +21,7 @@
     {
         margin: 10px;
     }
-    #activities-prop p, #activities-prop h2, #activities-prop h4, .optionType, .activitiesHeading
+    #activities-prop p, #activities-prop h2, #activities-prop h4, .optionType
     {
         margin: 10px;
     }
@@ -30,8 +30,109 @@
     <div class="col-md-4 col-sm-12 col-xs-12">
         <h2 class="heading">
             Activities</h2>
-        <h4 ng-show="HasFitnessFacilityInfo()" class="activitiesHeading">
-            Fitness and Leisure</h4>
+        <h4 ng-show="{{HasOtherActivitiesInfo()}}" class="activitiesHeading">
+            Other Activities</h4>
+        <!--Complimentary Touring--->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_FeatureComplimentaryTouring;property='Activities_FeatureComplimentaryTouring'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <!--<p class="detail" ng-show="GetDetails( value )" >Details</p> --->
+                <p class="detailDesc">
+                    {{GetDetails( value ) | replaceNull | capitalize}}
+                </p>
+            </div>
+        </div>
+        <!--On site Water Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_OtherActivitiesWater;property='Activities_OtherActivitiesWater'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
+                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
+                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
+            </div>
+        </div>
+        <!--On site Other Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_OtherActivitiesOther;property='Activities_OtherActivitiesOther'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
+                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
+                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
+            </div>
+        </div>
+        <!--On site Other Nearby(off-site) Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_OtherActivitiesNearby;property='Activities_OtherActivitiesNearby'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
+                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
+                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
+            </div>
+        </div>
+        <h4 ng-show="{{HasIndoorPursuitsInfo()}}" class="activitiesHeading">
+            Indoor Pursuits</h4>
+        <!--Guest Lounge Y/N  --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorGuestLounge;property='Activities_IndoorGuestLounge'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Library Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorLibrary;property='Activities_IndoorLibrary'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Book Swap Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorBookSwap;property='Activities_IndoorBookSwap'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Indoor Games Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorGames;property='Activities_IndoorGames'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Other Indoor Pursuits: Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Activities_IndoorOther;property='Activities_IndoorOther'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetActivityHeader (property) }}</p>
+            </div>
+        </div>
+        <h4 ng-show="HasFitnessFacilityInfo()" class="facilitiesHeading">
+            Fitness, Leisure & Activities</h4>
         <!--Pool: N Number=null Details=null Heated=null --->
         <div>
             <p class="test">
@@ -169,108 +270,6 @@
                     {{GetFacilityHeader (property) }}</p>
             </div>
         </div>
-        <h4 ng-show="{{HasIndoorPursuitsInfo()}}" class="activitiesHeading">
-            Indoor Pursuits</h4>
-        <!--Guest Lounge Y/N  --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_IndoorGuestLounge;property='Activities_IndoorGuestLounge'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-            </div>
-        </div>
-        <!--Library Y/N --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_IndoorLibrary;property='Activities_IndoorLibrary'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-            </div>
-        </div>
-        <!--Book Swap Y/N --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_IndoorBookSwap;property='Activities_IndoorBookSwap'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-            </div>
-        </div>
-        <!--Indoor Games Y/N --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_IndoorGames;property='Activities_IndoorGames'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-            </div>
-        </div>
-        <!--Other Indoor Pursuits: Y/N --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_IndoorOther;property='Activities_IndoorOther'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-            </div>
-        </div>
-        <h4 ng-show="{{HasOtherActivitiesInfo()}}" class="activitiesHeading">
-            Other Activities</h4>
-        <!--Complimentary Touring--->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_FeatureComplimentaryTouring;property='Activities_FeatureComplimentaryTouring'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-                <!--<p class="detail" ng-show="GetDetails( value )" >Details</p> --->
-                <p class="detailDesc">
-                    {{GetDetails( value ) | replaceNull | capitalize}}
-                </p>
-            </div>
-        </div>
-        <!--On site Water Activities:  N Details (complimentary activities)null Details (paid activities)null --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_OtherActivitiesWater;property='Activities_OtherActivitiesWater'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
-                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
-                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
-                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
-            </div>
-        </div>
-        <!--On site Other Activities:  N Details (complimentary activities)null Details (paid activities)null --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_OtherActivitiesOther;property='Activities_OtherActivitiesOther'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
-                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
-                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
-                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
-            </div>
-        </div>
-        <!--On site Culinary Activities:  N Details (complimentary activities)null Details (paid activities)null --->
-        <div>
-            <p class="test">
-                {{value=facts.Activities_OtherActivitiesCulinary;property='Activities_OtherActivitiesCulinary'}}::{{value}}</p>
-            <div class="features" ng-show="GetTorF ( value )">
-                <p class="title">
-                    {{GetActivityHeader (property) }}</p>
-                <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
-                    Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
-                <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
-                    Paid Activity: {{ GetPaidActivityDetails(value) }}
-                </p>
-            </div>
-        </div>
         <!--On Site Entertainment: N Details=null-->
         <div>
             <p class="test">
@@ -284,17 +283,18 @@
                 </p>
             </div>
         </div>
-        <!--On site Other Nearby(off-site) Activities:  N Details (complimentary activities)null Details (paid activities)null --->
+        <!--On site Culintary Activities:  N Details (complimentary activities)null Details (paid activities)null --->
         <div>
             <p class="test">
-                {{value=facts.Activities_OtherActivitiesNearby;property='Activities_OtherActivitiesNearby'}}::{{value}}</p>
+                {{value=facts.Activities_OtherActivitiesCulinary;property='Activities_OtherActivitiesCulinary'}}::{{value}}</p>
             <div class="features" ng-show="GetTorF ( value )">
                 <p class="title">
                     {{GetActivityHeader (property) }}</p>
                 <p class="complimentaryDetail" ng-show="GetComplimentaryActivitysDetails(value)">
                     Complimentary:{{ GetComplimentaryActivitysDetails(value) }}</p>
                 <p class="paidDetail" ng-show="GetPaidActivityDetails(value)">
-                    Paid Activity: {{ GetPaidActivityDetails(value) }}</p>
+                    Paid Activity: {{ GetPaidActivityDetails(value) }}
+                </p>
             </div>
         </div>
     </div>

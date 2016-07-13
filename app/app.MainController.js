@@ -236,6 +236,8 @@
                             $scope.myData = JSON.parse(data.d);
                             $scope.facts = (($scope.myData).facts)[0];
 
+                            $scope.ActivityFacts = {}
+
                             $scope.productInfo = new ProductInfo($scope.myData);
                             /*
                             var coordinates = $scope.productInfo.getDegreeCoordinates();  //$scope.GetDegreeCoordinates();
@@ -482,7 +484,7 @@
                               break;
 
 
-                          //facilities page                                                                                                                                                                                                                                                                                                                                                                                      
+                          //facilities page                                                                                                                                                                                                                                                                                                                                                                                       
                           case "Food and Beverage":
 
 
@@ -502,7 +504,7 @@
                               $scope.FacilitiesAll.push([1, source]);
                               $scope.FacilitiesAll.sort(sortFunction);
                               break;
-                          //activities page                                                                                                                                                                                                                                                                                                                                                                                      
+                          //activities page                                                                                                                                                                                                                                                                                                                                                                                       
                           case "Activities and Other":
 
 
@@ -511,7 +513,7 @@
                               break;
 
 
-                          //all general images, - to be used if others are missing                                                                                                                                                                                                                                                                                                                                                                                                 
+                          //all general images, - to be used if others are missing                                                                                                                                                                                                                                                                                                                                                                                                  
                           case "general":
 
 
@@ -663,23 +665,23 @@
                       var header = "";
                       switch (value) {
                           case 'Ratings_Awards': header = 'Award Description'; break;
-                          case 'Ratings_TransportAirport': header = 'Complimentary airport transfers included'; break;
-                          case 'Ratings_TransportCity': header = 'City or local transfers provided by property'; break;
+                          case 'Ratings_TransportAirport': header = 'Complimentary  Airport transfers'; break;
+                          case 'Ratings_TransportCity': header = 'Complimentary  City or local transfers'; break;
                           case 'Ratings_MealPlan': header = 'Meal Plan - Lead-in price inclusive of:'; break;
-                          case 'Ratings_InsurancePublicLiability': header = 'Public Liability'; break;
-                          case 'Ratings_InsurancePersonal': header = 'Personal Indemnity'; break;
+                          case 'Ratings_InsurancePublicLiability': header = 'Public Liability (Public Liability Insurance )'; break;
+                          case 'Ratings_InsurancePersonal': header = ' Personal Indemnity (Personal Indemnity Insurance)'; break;
                           case 'Ratings_MinStay': header = 'Minimum stay'; break;
                           case 'Ratings_ChildPolicyAdultsOnly': header = 'Adults Only'; break;
                           case 'Ratings_ChildPolicyChildFree': header = 'Children free when using existing bedding'; break;
-                          case 'Ratings_Servicing': header = 'Servicing'; break;
-                          case 'Ratings_SpecialOffersStayPay': header = 'Stay pay offer'; break;
-                          case 'Ratings_SpecialOffersUpgrade': header = ' Upgrade offer'; break;
-                          case 'Ratings_SpecialOffersMeal': header = 'Meal offer'; break;
-                          case 'Ratings_SpecialOfferAirportTransfer': header = 'Airport transfer offer'; break;
-                          case 'Ratings_SpecialOfferResortVoucher': header = 'Resort voucher offer'; break;
-                          case 'Ratings_SpecialOfferFlowers': header = 'Flowers or wine on arrival offer'; break;
-                          case 'Ratings_SpecialOfferHoneymoon': header = 'Honeymoon offer'; break;
-                          case 'Ratings_SpecialOfferOthers': header = 'Other offers including details and validity'; break;
+                          case 'Ratings_Servicing': header = 'Weekly servicing'; break;
+                          case 'Ratings_SpecialOffersStayPay': header = 'Stay pay offer ( great stay pay details) (Year-round) '; break;
+                          case 'Ratings_SpecialOffersUpgrade': header = 'Upgrade offer (great upgrade details) (Seasonal) '; break;
+                          case 'Ratings_SpecialOffersMeal': header = 'Meal offer (great meal offer details) (Seasonal) '; break;
+                          case 'Ratings_SpecialOfferAirportTransfer': header = 'Airport transfer offer (One-way) (Seasonal)'; break;
+                          case 'Ratings_SpecialOfferResortVoucher': header = 'Resort voucher offer (voucher details) (Year-round)'; break;
+                          case 'Ratings_SpecialOfferFlowers': header = 'Flowers or wine on arrival offer (flowers details) (Year-round)'; break;
+                          case 'Ratings_SpecialOfferHoneymoon': header = 'Honeymoon offer (honeymoon offer) (Seasonal)'; break;
+                          case 'Ratings_SpecialOfferOthers': header = 'Other offers including details and validity (other offers)'; break;
 
                       }
                       return header;
@@ -689,9 +691,9 @@
                   $scope.GetActivityHeader = function (value) {
                       var header = "";
                       switch (value) {
-                          case 'Activities_FeatureComplimentaryTouring': header = 'Complimentary Touring'; break;
-                          case 'Activities_FeatureOnsiteGolf': header = 'On Site Golf'; break;
-                          case 'Activities_FeatureTennisCourt': header = 'On-site Full-size Tennis court(s)'; break;
+                          case 'Activities_FeatureComplimentaryTouring': header = 'Touring Activities'; break;
+                          case 'Activities_FeatureOnsiteGolf': header = 'Complimentary  On-site golf'; break;
+                          case 'Activities_FeatureTennisCourt': header = 'Complimentary  On-site full-size tennis court(s)'; break;
                           case 'Activities_FeaturePrivateBeach': header = 'Private Beach'; break;
                           case 'Activities_FeaturePrivateGardens': header = 'Private Gardens'; break;
                           case 'Activities_FeatureEntertainment': header = 'Complimentary On-site Entertainment'; break;
@@ -712,27 +714,27 @@
                   $scope.GetFacilityHeader = function (value) {
                       var header = "";
                       switch (value) {
-                          case 'Facility_Dining_BBQ': header = 'BBQ Facilities for guest use'; break;
-                          case 'Facility_DiningOnsiteResto': header = 'On-site restaurant(s)'; break;
-                          case 'Facility_DiningBar': header = 'On-site Bar(s)'; break;
-                          case 'Facility_DiningCafe': header = 'On-site Cafe(s)'; break;
-                          case 'Facility_DiningRoomService': header = 'Room Services'; break;
+                          case 'Facility_Dining_BBQ': header = 'BBQ facilities for guest use'; break;
+                          case 'Facility_DiningOnsiteResto': header = 'Restaurant(s)'; break;
+                          case 'Facility_DiningBar': header = 'Bar(s)'; break;
+                          case 'Facility_DiningCafe': header = 'Café(s)'; break;
+                          case 'Facility_DiningRoomService': header = 'Room Service'; break;
                           case 'Facility_DiningOutdoorDining': header = 'Outdoor Dining'; break;
                           case 'Facility_DiningPrivateDining': header = 'Private Dining'; break;
-                          case 'Facility_FamilyKidsClub': header = 'Kids Club'; break
-                          case 'Facility_FamilyBabySitting': header = 'Baby Sitting Service'; break;
-                          case 'Facility_FamilyChildMinding': header = 'Child Minding Service'; break;
-                          case 'Facility_FamilyOnsitePlayground': header = 'On-site Playground'; break;
+                          case 'Facility_FamilyKidsClub': header = 'Complimentary  Kids\’ club'; break
+                          case 'Facility_FamilyBabySitting': header = 'Complimentary  Babysitting service'; break;
+                          case 'Facility_FamilyChildMinding': header = 'Complimentary  Child-minding service'; break;
+                          case 'Facility_FamilyOnsitePlayground': header = 'Childrens\’ playground '; break;
                           case 'Facility_FamilyHighChair': header = 'Highchair(s)'; break;
-                          case 'Facility_FamilyCot': header = 'Cot(s)'; break;
+                          case 'Facility_FamilyCot': header = 'Complimentary  Cot(s)'; break;
                           case 'Facility_FitnessSki': header = 'Ski-in-ski-out'; break;
-                          case 'Facility_FitnessPool': header = 'On-site swimming pool(s)'; break;
+                          case 'Facility_FitnessPool': header = 'Swimming pool(s)'; break;
                           case 'Facility_FitnessSwimPoolBar': header = 'Swim-up pool bar'; break;
 
-                          case 'Facility_FitnessKidsPool': header = 'Kid\'s pool(s) or kid\'s (shallow) section of pool(s)'; break;
-                          case 'Facility_FitnessJacuzzi': header = 'On-site Jacuzzi'; break;
+                          case 'Facility_FitnessKidsPool': header = 'Kid\'s pool'; break;
+                          case 'Facility_FitnessJacuzzi': header = 'Jacuzzi(s) '; break;
                           case 'Facility_FitnessGym': header = 'Gym'; break;
-                          case 'Facility_FitnessDaySpa': header = 'Day Spa'; break;
+                          case 'Facility_FitnessDaySpa': header = 'Spa(s) '; break;
                       }
 
 
@@ -742,30 +744,30 @@
                   $scope.GetServiceHeader = function (value) {
                       var header = "";
                       switch (value) {
-                          // business                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                          // business                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                           case 'Services_BussinessCenter':
-                              header = "Business Center";
+                              header = "Business centre";
                               break;
 
                           case 'Services_BusinessConferenceRoom':
-                              header = "Business Conference Center";
+                              header = "Conference room(s)";
                               break;
-                          //internet                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                          //internet                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
                           case 'Services_InternetOnsite':
-                              header = "On Site Internet Access";
+                              header = "Internet access";
                               break;
 
-                          //laundry                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                          //laundry                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                           case 'Services_LaundryFacility':
-                              header = "Onsite Laundry Facility";
+                              header = "Laundry facilities (Washing machine)";
                               break;
 
                           case 'Services_LaundryOnsite':
-                              header = "Laundry Onsite";
+                              header = "Laundry services (Ironing)";
                               break;
 
-                          //Other                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                          //Other                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                           case 'Services_Other24HrConcierge':
                               header = "24 Hour Concierge";
                               break;
@@ -794,23 +796,22 @@
                               header = "Reception";
                               break;
 
-                          //parking                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                          //parking                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                           case 'Services_ParkingOnsite':
-                              header = "Parking On Site";
+                              header = "Secure Self parking";
                               break;
 
                           case 'Services_ParkingValet':
-                              header = "Parking Valet";
+                              header = "Undercover Valet parking";
                               break;
 
-
-                          //parking                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 
 
                       }
                       return header;
                   };
+
 
                   $scope.GetNumberOfTreatmentRooms = function (value) {
                       var retValue = false;
@@ -1337,7 +1338,12 @@
                           $scope.GetTorF($scope.facts.Facility_FitnessKidsPool) ||
                           $scope.GetTorF($scope.facts.Facility_FitnessJacuzzi) ||
                           $scope.GetTorF($scope.facts.Facility_FitnessGym) ||
-                          $scope.GetTorF($scope.facts.Facility_FitnessDaySpa)) {
+                          $scope.GetTorF($scope.facts.Facility_FitnessDaySpa) ||
+                          $scope.GetTorF($scope.facts.Activities_FeatureOnsiteGolf) ||
+                          $scope.GetTorF($scope.facts.Activities_FeatureTennisCourt) ||
+                          $scope.GetTorF($scope.facts.Activities_FeaturePrivateBeach) ||
+                          $scope.GetTorF($scope.facts.Activities_FeaturePrivateGardens) 
+                          ) {
                           retValue = true;
                       }
                       return retValue;
@@ -1434,6 +1440,39 @@
 
                   }
 
+                  /** activities **/
+                  $scope.HasOtherActivitiesInfo = function () {
+                      var retValue = false;
+
+                      if ($scope.GetTorF($scope.facts.Activities_FeatureComplimentaryTouring) ||
+                          $scope.GetTorF($scope.facts.Activities_OtherActivitiesWater) ||
+                          $scope.GetTorF($scope.facts.Activities_OtherActivitiesOther) ||
+                          $scope.GetTorF($scope.facts.Activities_OtherActivitiesNearby)
+
+                      ) {
+                          retValue = true;
+                      }
+                      return retValue;
+                  }
+
+                  $scope.HasIndoorPursuitsInfo = function () {
+                      var retValue = false;
+                      if ($scope.GetTorF($scope.facts.Activities_IndoorGuestLounge) ||
+                          $scope.GetTorF($scope.facts.Activities_IndoorLibrary) ||
+                          $scope.GetTorF($scope.facts.Activities_IndoorBookSwap) ||
+                          $scope.GetTorF($scope.facts.Activities_IndoorGames) ||
+                          $scope.GetTorF($scope.facts.Activities_IndoorOther)
+                      ) {
+                          retValue = true;
+                      }
+
+                      return retValue;
+                  }
+
+                  $scope.HasFitnessLeisureActivitiesInfo = function () {
+                      var retValue = false;
+                      return retValue;
+                  }
                   $scope.GetStaticGoogleMapUrl = function () {
                       var staticMapUrl = "https://maps.googleapis.com/maps/api/staticmap";
                       //Set the Google Map Center.

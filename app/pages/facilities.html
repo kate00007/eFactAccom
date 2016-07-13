@@ -1,15 +1,14 @@
 <style>
-    .test 
+    .test
     {
-        display:none; 
+        display: none;
     }
-     a.facilitiesLink: hover
+    a.facilitiesLink: hover
     {
-       
         color: #AF8E3F;
         text-decoration: none;
     }
-     .facilitiesLink
+    .facilitiesLink
     {
         padding: 10px 20px;
         background-color: rgb(234, 229, 220);
@@ -18,375 +17,259 @@
         margin: 10px;
     }
     
-    .facility-item h4, .facility-item p,.facility-item a, .facility-details h2, .facility-details p , .facilitiesHeading
+    .facility-item h4, .facility-item p, .facility-item a, .facility-details h2, .facility-details p, .facilitiesHeading
     {
-        margin:10px;
+        margin: 10px;
     }
 </style>
- <div class="row facility-details">
-			<div class="col-md-4">
-                      <h2 class="heading">Facilities</h2>
-
-                      
-                      <h4 ng-show="{{HasDiningFacilityInfo()}}" class="facilitiesHeading">Dining</h4>
-                      <!--On Site Resto: N Number=null--->
-                      <div>
-                              <p class="test">{{value=facts.Facility_DiningOnsiteResto;property='Facility_DiningOnsiteResto'}}::{{value}}</p>
-                              <div class="features" ng-show="GetTorF ( value )">
-                                         
-                                         <p class="title">{{GetFacilityHeader (property) }}</p>
-                                         <p class="number" ng-show="GetNumber( value )" >{{GetNumber( value )}} </p> 
-							             
-                              </div> 
-                     </div>
-                     
-                     
-                     <!--On-site bar(s): N Number=null---->
-                     <div>
-                              <p class="test">{{value=facts.Facility_DiningBar;property='Facility_DiningBar'}}::{{value}}</p>
-                              <div class="features"  ng-show="GetTorF ( value )">
-                                         
-                                         <p class="title">{{GetFacilityHeader (property) }}</p>
-                                         <p class="number" ng-show="GetNumber( value )" >{{GetNumber( value )}} </p> 
-							       
-                              </div> 
-                    </div>
-                      
-                    <!--On-site Cafe: N Number=null---->
-                    <div> 
-                              <p class="test">{{value=facts.Facility_DiningCafe;property='Facility_DiningCafe'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                            <p class="number" ng-show="GetNumber( value )" >{{GetNumber( value )}} </p> 
-							              
-						               </div>
-                   </div>
-                              
-                    <!-- Dining Room Services: N 24-hour=null --->
-                    <div> 
-                              <p class="test">{{value=facts.Facility_DiningRoomService;property='Facility_DiningRoomService'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                          
-							                <p class="24hour" ng-show="Get24Hours( value )" >24-hour </p>
-						               </div>
-                   </div>
-
-                    <!-- Outdoor Dining: Y/N--->
-                    <div> 
-                              <p class="test">{{value=facts.Facility_DiningOutdoorDining;property='Facility_DiningOutdoorDining'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                            
-						               </div>
-                   </div>
-
-                  
-
-                   <!-- Private Dining: Y/N --->
-                    <div> 
-                              <p class="test">{{value=facts.Facility_DiningPrivateDining;property='Facility_DiningPrivateDining'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           
-						               </div>
-                   </div>
-                   
-                   <!-- BBQ Facilities: Y/N --->
-                    <div> 
-                              <p class="test">{{value=facts.Facility_Dining_BBQ;property='Facility_Dining_BBQ'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           
-						               </div>
-                   </div>
-
-
-                   <!--Private Dining Y/N--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_DiningPrivateDining;property='Facility_DiningPrivateDining'}}::{{value}}</p>           
-                                          <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           
-							              
-						               </div>
-                  </div>
-                  
-                   <h4 ng-show="{{HasFamilyFacilityInfo()}}" class="facilitiesHeading">Family</h4>
-                   <!-- Kids Club: N Age Range=null --->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FamilyKidsClub;property='Facility_FamilyKidsClub'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           
-                                            <p class="complimentary" ng-show="GetAgeRange( value )">Age Range: {{GetAgeRange( value )}}</p>
-							             
-							              
-						               </div>
-                   </div>
-
-                   <!-- Baby Sitting Y/N --->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FamilyBabySitting;property='Facility_FamilyBabySitting'}}::{{value}}</p>           
-                                       <div class="features" ng-show="GetTorF ( value )">
-                                          <p class="title">{{GetFacilityHeader (property) }}</p>           
-						               </div>
-                  </div>
-
-
-                  <!-- Child Minding: Y/N--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FamilyChildMinding;property='Facility_FamilyChildMinding'}}::{{value}}</p>           
-                                          <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           
-							              
-						               </div>
-                   </div>
-
-                   <!--Onsite Playground  Y/N--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FamilyOnsitePlayground;property='Facility_FamilyOnsitePlayground'}}::{{value}}</p>           
-                                           <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           
-							              
-						               </div>
-                   </div>
-
-                    <!--High Chair Y/N--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FamilyHighChair;property='Facility_FamilyHighChair'}}::{{value}}</p>           
-                                         <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                          
-							              
-						               </div>
-                  </div>
-
-                   <!--Cot Y/N--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FamilyCot;property='Facility_FamilyCot'}}::{{value}}</p>           
-                                          <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           
-							              
-						               </div>
-                   </div>
-
-                  
-
-                  
-                  
-
-                 
-
-                 <h4 ng-show="HasFitnessFacilityInfo()"  class="facilitiesHeading">Fitness and Leisure</h4>
-                   <!-- Ski Y/N --->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FitnessSki;property='Facility_FitnessSki'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                          
-						               </div>
-                  </div>
-
-               
-
-                  <!--Pool: N Number=null Details=null Heated=null --->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FitnessPool;property='Facility_FitnessPool'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                           <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           <p class="number" ng-show="GetPoolNumber( value )" >{{GetPoolNumber( value )}} </p>
-                                           <p class="detail" ng-show="GetPoolDetails( value )" >Details</p> 
-                                           <p class="detail" ng-show="GetPoolDetails( value )" >{{GetPoolDetails( value )}}</p>
-                                           <p class="detail" ng-show="GetPoolHeatedDetail( value )" >Heated </p>
-							              
-						               </div>
-                  </div>
-
-                  
-
-
-                   <!---Swim-up pool bar Y/N-->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FitnessSwimPoolBar;property='Facility_FitnessSwimPoolBar'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                          
-						               </div>
-                  </div>
-
-                  <!--Kid's Pool Y/N--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FitnessKidsPool;property='Facility_FitnessKidsPool'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                           <p class="title">{{GetFacilityHeader (property) }}</p>
-                                           <p class="number" ng-show="GetNumber( value )" >{{GetNumber( value )}} </p>
-                                           <p class="detail" ng-show="GetPoolDetails( value )" >Details</p> 
-                                           <p class="detail" ng-show="GetPoolDetails( value )" >{{GetPoolDetails( value )}}</p>
-                                           <p class="detail" ng-show="GetPoolHeatedDetail( value )" >Heated </p>
-							              
-						               </div>
-                  </div>
-
-                 <!--Jacuzzi: N Number=null--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FitnessJacuzzi;property='Facility_FitnessJacuzzi'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                            <p class="number" ng-show="GetNumber( value )" >{{GetNumber( value )}} </p> 
-							              
-						               </div>
-                  </div>
-
-                
-
-
-                 <!--Gym: Y/N--->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FitnessGym;property='Facility_FitnessGym'}}::{{value}}</p>           
-                                        <div class="features" ng-show="GetTorF ( value )">
-                                        
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                          
-						               </div>
-                  </div>
-
-                <!--Day Spa: N Name(s)=null Number of Treatment Rooms=null --->
-                   <div> 
-                              <p class="test">{{value=facts.Facility_FitnessDaySpa;property='Facility_FitnessDaySpa'}}::{{value}}</p>           
-                                        <div class="features"  ng-show="GetTorF ( value )">
-                                             
-                                            <p class="title">{{GetFacilityHeader (property) }}</p>
-                                            <p ng-show="GetSpaNames( value )" >Name(s): {{GetSpaNames(value)}} </p>
-                                            <p ng-show="GetNumberOfTreatmentRooms(value)" >Number of Treatment Rooms: {{GetNumberOfTreatmentRooms(value)}}  </p>
-						               </div>
-                  </div>
-                
-			</div>
-			<!--desktop side images -->	
-			<div class="col-md-8 hidden-sm hidden-xs">
-						<div class="blocks">
-							
-					       <div class="box-1">
-								<img imagefit  fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[0][1]))" ng-src="{{FacilitiesAll[0][1]}}" alt="" />
-								<p>Image 1</p>
-							
-								
-							</div>
-							<div class="box-2">
-								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[1][1]))" ng-src="{{FacilitiesAll[1][1]}}" alt="" />
-								<p>Image 2</p>
-							</div>
-							
-							<div class="box-3">
-								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[2][1]))" ng-src="{{FacilitiesAll[2][1]}}" alt="" />
-								<p>Image 3</p>
-							</div>
-							
-							<div class="box-4">
-								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[3][1]))" ng-src="{{FacilitiesAll[3][1]}}" alt="" />
-								<p>Image 4</p>
-								
-								
-							</div>
-							
-							<div class="box-5">
-								<img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[4][1]))" ng-src="{{FacilitiesAll[4][1]}}" alt="" />
-								<p>Image 5</p>
-							</div>
-
-							
-						</div>	
-							
-			</div>
-</div><!-- end row-->	
+<div class="row facility-details">
+    <div class="col-md-4">
+        <h2 class="heading">
+            Facilities</h2>
+        <h4 ng-show="{{HasDiningFacilityInfo()}}" class="facilitiesHeading">
+            Dining</h4>
+        <!--On Site Resto: N Number=null--->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_DiningOnsiteResto;property='Facility_DiningOnsiteResto'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+                <p class="number" ng-show="GetNumber( value )">
+                    {{GetNumber( value )}}
+                </p>
+            </div>
+        </div>
+        <!--On-site bar(s): N Number=null---->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_DiningBar;property='Facility_DiningBar'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+                <p class="number" ng-show="GetNumber( value )">
+                    {{GetNumber( value )}}
+                </p>
+            </div>
+        </div>
+        <!--On-site Cafe: N Number=null---->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_DiningCafe;property='Facility_DiningCafe'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+                <p class="number" ng-show="GetNumber( value )">
+                    {{GetNumber( value )}}
+                </p>
+            </div>
+        </div>
+        <!-- Dining Room Services: N 24-hour=null --->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_DiningRoomService;property='Facility_DiningRoomService'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+                <p class="24hour" ng-show="Get24Hours( value )">
+                    24-hour
+                </p>
+            </div>
+        </div>
+        <!-- Outdoor Dining: Y/N--->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_DiningOutdoorDining;property='Facility_DiningOutdoorDining'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+        <!-- Private Dining: Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_DiningPrivateDining;property='Facility_DiningPrivateDining'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+        <!-- BBQ Facilities: Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_Dining_BBQ;property='Facility_Dining_BBQ'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+       
+        <h4 ng-show="{{HasFamilyFacilityInfo()}}" class="facilitiesHeading">
+            Family</h4>
+        <!-- Kids Club: N Age Range=null --->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_FamilyKidsClub;property='Facility_FamilyKidsClub'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+                <p class="complimentary" ng-show="GetAgeRange( value )">
+                    Age Range: {{GetAgeRange( value )}}</p>
+            </div>
+        </div>
+        <!--Onsite Playground  Y/N--->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_FamilyOnsitePlayground;property='Facility_FamilyOnsitePlayground'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+        <!-- Baby Sitting Y/N --->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_FamilyBabySitting;property='Facility_FamilyBabySitting'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+        <!-- Child Minding: Y/N--->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_FamilyChildMinding;property='Facility_FamilyChildMinding'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--Cot Y/N--->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_FamilyCot;property='Facility_FamilyCot'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+        <!--High Chair Y/N--->
+        <div>
+            <p class="test">
+                {{value=facts.Facility_FamilyHighChair;property='Facility_FamilyHighChair'}}::{{value}}</p>
+            <div class="features" ng-show="GetTorF ( value )">
+                <p class="title">
+                    {{GetFacilityHeader (property) }}</p>
+            </div>
+        </div>
+      
+       
+    </div>
+    <!--desktop side images -->
+    <div class="col-md-8 hidden-sm hidden-xs">
+        <div class="blocks">
+            <div class="box-1">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[0][1]))"
+                    ng-src="{{FacilitiesAll[0][1]}}" alt="" />
+                <p>
+                    Image 1</p>
+            </div>
+            <div class="box-2">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[1][1]))"
+                    ng-src="{{FacilitiesAll[1][1]}}" alt="" />
+                <p>
+                    Image 2</p>
+            </div>
+            <div class="box-3">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[2][1]))"
+                    ng-src="{{FacilitiesAll[2][1]}}" alt="" />
+                <p>
+                    Image 3</p>
+            </div>
+            <div class="box-4">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[3][1]))"
+                    ng-src="{{FacilitiesAll[3][1]}}" alt="" />
+                <p>
+                    Image 4</p>
+            </div>
+            <div class="box-5">
+                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[4][1]))"
+                    ng-src="{{FacilitiesAll[4][1]}}" alt="" />
+                <p>
+                    Image 5</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row-->
+<br />
+<br />
+<hr />
+<div ng-repeat="a in productInfo.getFacilityList()">
+    <div class="row facility-item">
+        <div class="col-md-6">
+            <h4 class="optionType">
+                {{a.Option_Name}}</h4>
+            <!--  <p class="optionDescription"> {{a.Option_Id}} </p> -->
+            <p class="optionDescription">
+                {{a.Description}}
+            </p>
+            <p>
+            </p>
             <br />
-
-            <br />
-            <hr/>
-               
-                <div ng-repeat="a in productInfo.getFacilityList()">
-                 
-              
-                  
-                         <div class="row facility-item">
-
-						    <div class="col-md-6">
-                                 
-                                 <h4 class="optionType">{{a.Option_Name}}</h4>    
-							        <!--  <p class="optionDescription"> {{a.Option_Id}} </p> -->
-                                    <p class="optionDescription"> {{a.Description}} </p>
-							        <p></p>
-                                    <br />
-                                    <a ng-show="{{a.Description}}" href="#facilitiesDetails?productOptionId={{a.Product_Option_Id}}" class="facilitiesLink">Read More</a>
-                            </div>
-
-                            <div class="col-md-6 hidden-sm hidden-xs">
-                                   <a href="#facilitiesDetails?productOptionId={{a.Product_Option_Id}}" style="margin:0">
-                                   <div class="image-container" style="width:502px;height:221px;margin-top: 8%;">
-                                         <img imagefit fallback-src="{{productInfo.getHiResOptionImage(a.Option_Id)}}" ng-src="{{productInfo.getOptionImage(a.Option_Id)  }}" alt=""/>
-
-                                   </div>
-                                   </a>
-						    </div>
-                            <a href="#facilitiesDetails?productOptionId={{a.Product_Option_Id}}" style="margin:0">
-                            <div class="col-md-6  visible-sm visible-xs" style="height:221px;margin-top: 3%;">
-                                       <img imagefit fallback-src="{{productInfo.getHiResOptionImage(a.Option_Id)}}" ng-src="{{productInfo.getOptionImage(a.Option_Id)  }}" alt=""/>
-
-						    </div>
-                            </a>
-                            <hr />
-
-                        </div>  <!-- end row -->   
-                        <br />    
-                        <br />    
-							  
+            <a ng-show="{{a.Description}}" href="#facilitiesDetails?productOptionId={{a.Product_Option_Id}}"
+                class="facilitiesLink">Read More</a>
+        </div>
+        <div class="col-md-6 hidden-sm hidden-xs">
+            <a href="#facilitiesDetails?productOptionId={{a.Product_Option_Id}}" style="margin: 0">
+                <div class="image-container" style="width: 502px; height: 221px; margin-top: 8%;">
+                    <img imagefit fallback-src="{{productInfo.getHiResOptionImage(a.Option_Id)}}" ng-src="{{productInfo.getOptionImage(a.Option_Id)  }}"
+                        alt="" />
                 </div>
-
-                <!--mobile side images-->
-                
-                     <div class="col-sm-12 col-xs-12 visible-xs visible-sm">
-                           
-
-                           <div class="row" style="height:221px;margin-top: 8%;">
-                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[0][1]))" ng-src="{{FacilitiesAll[0][1]}}" alt="" />
-								<p>Image 1</p>
-                           </div>
-
-                           <div class="row" style="height:221px;margin-top: 8%;">
-                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[1][1]))" ng-src="{{FacilitiesAll[1][1]}}" alt="" />
-								<p>Image 2</p>
-                           </div>
-
-                           <div class="row" style="height:221px;margin-top: 8%;">
-                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[2][1]))" ng-src="{{FacilitiesAll[2][1]}}" alt="" />
-								<p>Image 3</p>
-                           </div>
-
-                           <div class="row" style="height:221px;margin-top: 8%;">
-                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[3][1]))" ng-src="{{FacilitiesAll[3][1]}}" alt="" />
-								<p>Image 4</p>
-                           </div>
-
-                           <div class="row" style="height:221px;margin-top: 8%;">
-                                <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[4][1]))" ng-src="{{FacilitiesAll[4][1]}}" alt="" />
-								<p>Image 5</p>
-                           </div>
-                    </div>
+            </a>
+        </div>
+        <a href="#facilitiesDetails?productOptionId={{a.Product_Option_Id}}" style="margin: 0">
+            <div class="col-md-6  visible-sm visible-xs" style="height: 221px; margin-top: 3%;">
+                <img imagefit fallback-src="{{productInfo.getHiResOptionImage(a.Option_Id)}}" ng-src="{{productInfo.getOptionImage(a.Option_Id)  }}"
+                    alt="" />
+            </div>
+        </a>
+        <hr />
+    </div>
+    <!-- end row -->
+    <br />
+    <br />
+</div>
+<!--mobile side images-->
+<div class="col-sm-12 col-xs-12 visible-xs visible-sm">
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[0][1]))"
+            ng-src="{{FacilitiesAll[0][1]}}" alt="" />
+        <p>
+            Image 1</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[1][1]))"
+            ng-src="{{FacilitiesAll[1][1]}}" alt="" />
+        <p>
+            Image 2</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[2][1]))"
+            ng-src="{{FacilitiesAll[2][1]}}" alt="" />
+        <p>
+            Image 3</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[3][1]))"
+            ng-src="{{FacilitiesAll[3][1]}}" alt="" />
+        <p>
+            Image 4</p>
+    </div>
+    <div class="row" style="height: 221px; margin-top: 8%;">
+        <img imagefit fallback-src="getHiResOptionImage(GetHomePageImage(FacilitiesAll[4][1]))"
+            ng-src="{{FacilitiesAll[4][1]}}" alt="" />
+        <p>
+            Image 5</p>
+    </div>
+</div>
